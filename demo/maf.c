@@ -27,33 +27,53 @@ void vec_print_std(vector_type vec)
   int i;
   for(i=0;i<4;i++)
   {    
-    printf("%08x",vec.s_i[i]); 
+    printf("%08x ",vec.s_i[i]); 
   }
 }
 
 //=========================================================================
+#define case2
+#ifdef case1
+vector_type a = { 0x3f800000, 0x3f800000, 0x7f600000, 0x7f800000 };
+vector_type b = { 0x00200000, 0x00200000, 0x42c80000, 0x42c80000 };
+vector_type c = { 0x00400000, 0x80400000, 0x3f800000, 0xff800000 };
+#endif
 
-
-vector_type a = { 0x3f800000, 0x3f800000, 0x3f800000, 0x3f800000 };
-vector_type b = { 0x00200000, 0x3f800000, 0x3f800000, 0x3f800000 };
-vector_type c = { 0x00400000, 0x3f800000, 0x3f800000, 0x3f800000 };
+#ifdef case2
+vector_type a = { 0x3f800000, 0x3f800000, 0x7f600000, 0x7f800000 };
+vector_type b = { 0x80200000, 0x00200000, 0x42c80000, 0x42c80000 };
+vector_type c = { 0x3f800000, 0x3f800000, 0x3f800000, 0xff800000 };
+#endif
 
 vector_type f;
 vector_type vscr_value = {0x0,0x0,0x0,0x0};
 
 int main(){
+printf("a=0x");
+vec_print_std( a );
+printf("\n");
+printf("b=0x");
+vec_print_std( b );
+printf("\n");
+printf("c=0x");
+vec_print_std( c );
+printf("\n");
 //----------------------------------------
 //Non Java Mode
 //----------------------------------------
 //Detect Machine state is Non-Java mode or not,1--NJ mode,0--Java mode
 vector unsigned short d;
 d = vec_mfvscr();
+printf("VSCR=0x");
 vec_print_std((vector_type)d);
 
 printf("\n");
 //-----------------------------------
 printf("Non Java mode result:\n");
+//calculate the axb+c
 f.v_f = vec_madd(a.v_f,b.v_f,c.v_f);
+//print the result
+printf("axb+c=0x\n");
 vec_print_std(f);
 printf("\n");
 
@@ -61,13 +81,19 @@ printf("\n");
 //Java Mode
 //---------------------------------------
 //enter Java Mode
-vec_mtvscr(vscr_value);
+vec_mtvscr(vscr_value.v_u_s);
 //check for Machine mode
 d = vec_mfvscr();
+printf("VSCR=0x");
 vec_print_std((vector_type)d);
 printf("\n");
+
 printf("Java mode result:\n");
+//calculate the axb+c
 f.v_f = vec_madd(a.v_f,b.v_f,c.v_f);
+
+//print the result
+printf("axb+c=0x\n");
 vec_print_std(f);
 printf("\n");
 
