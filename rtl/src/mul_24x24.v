@@ -6,7 +6,7 @@
 //Revision	: v1.0
 //Description	: 1) carry out 24 x 24 multiplication,obtain two result:48-bit
 // carry and 48-bit sum.
-// 2) using tradiional algorithm,fisrt generate 24 partial products,then csa trees are
+// 2) using traditional algorithm,first generate 24 partial products,then csa trees are
 // employed to get the final carry and sum result.
 // 3) 3 levels csa are employed
 // 4) combinational logic
