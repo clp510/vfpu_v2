@@ -71,69 +71,40 @@ unpackage unpackage_c   (
 //-----------------------------------------------
 //main pipeline (1st stage)
 //----------------------------------------------
+wire                    inv_mask;
+wire                    s_tmp;
+wire                    final_m;
+wire    [9:0]           exp_tmp;//bigger one between (ea+eb+27) and (ec)
+wire    [25:0]          c_frac_align_h;
+wire    [47:0]          c_frac_align_m;
+wire    [23:0]          c_frac_align_l;
+wire    [47:0]          carry;
+wire    [47:0]          sum;
+wire    [8:0]           exp_ab;
+mul_stage   mul_stage_inst  (
+                            .sa             (   sa          ),
+                            .sb             (   sb          ),
+                            .sc             (   sc          ),
+                            .exp_a          (   ea          ),
+                            .exp_b          (   eb          ),
+                            .exp_c          (   ec          ),
+                            .a_frac         (   a_frac      ),
+                            .b_frac         (   b_frac      ),
+                            .c_frac         (   c_frac      ),
 
-//-----------------------------------
-//get the inv_mask signal
-// 1'b0->equivalent to multiply-add,1'b1->equivalent to multiply-minus
-//----------------------------------
-wire        inv_mask;
-assign  inv_mask    = sa ^ sb ^ sc;
-
-//sign logic
-//to get s_tmp and final_m
-wire        s_tmp;
-wire        final_m;
-sign_handler sign_handler_inst   (
-                                .sa     (   sa  ),
-                                .sb     (   sb  ),
-                                .sc     (   sc  ),
-
-                                .s_tmp  (   s_tmp   ),
-                                .final_m(   final_m )
-                                );                                
-//exponent logic,get the exp_tmp and shf_num
-//exp_tmp=max(ea+eb+27,ec),
-
-wire    [9:0]       exp_tmp;//signed value with 2's complement format
-wire    [6:0]       shf_num;//shift number to align_shf_74 module
-wire    [8:0]       exp_ab;//exp_a+exp_b
-exp_handler exp_handler_inst    (
-                                .exp_a      (   ea  ),
-                                .exp_b      (   eb  ),
-                                .exp_c      (   ec  ),
-
-                                .exp_tmp    (   exp_tmp ),
-                                .shf_num    (   shf_num ),
-                                .exp_ab     (   exp_ab  )
-                                );
-
-//alignment shift
-wire    [97:0]      c_frac_align;//the MSB is the integer bit,the remaining 97 bits are fractional part
-wire    [25:0]      c_frac_align_h;
-wire    [47:0]      c_frac_align_m;
-wire    [23:0]      c_frac_align_l;
-
-align_shf_74    align_shf_74_inst   (
-                                    .inv_mask   (   inv_mask    ),
-                                    .c_frac     (   c_frac      ),
-                                    .shf_num    (   shf_num     ),
-                                    
-                                    .shf_res    (   c_frac_align)
-                                    );
-assign  {c_frac_align_h,c_frac_align_m,c_frac_align_l}  = c_frac_align;
-
-//---------------------------------------------------
-//a_frac x b_frac
-//---------------------------------------------------
-wire    [47:0]      carry;
-wire    [47:0]      sum;
-mul_24x24   mul_24x24_inst  (
-                            .a      (   a_frac  ),
-                            .b      (   b_frac  ),
-
-                            .carry  (   carry   ),
-                            .sum    (   sum     )
+                            .inv_mask       (   inv_mask    ),
+                            .s_tmp          (   s_tmp       ),
+                            .final_m        (   final_m     ),
+                            .exp_tmp        (   exp_tmp     ),
+                            .c_frac_align_h (   c_frac_align_h  ),
+                            .c_frac_align_m (   c_frac_align_m  ),
+                            .c_frac_align_l (   c_frac_align_l  ),
+                            .carry          (   carry       ),
+                            .sum            (   sum         ),
+                            
+                            .exp_ab         (   exp_ab      )
                             );
+
 
 //---------------------------------------------------------
 // special case handle logic pipeline (1st stage)
@@ -197,6 +168,9 @@ end
 //2nd stage ( add stage )
 //================================================================
 
+//--------------------------------------------------------------
+// main pipeline
+//--------------------------------------------------------------
 wire            frac_inter_h_s;
 wire    [74:0]  frac_inter;//intermediate result of fractional part
 add_stage   add_stage_inst  (
@@ -210,6 +184,135 @@ add_stage   add_stage_inst  (
                             .frac_inter_h_s (   frac_inter_h_s  ),
                             .frac_inter     (   frac_inter      )
                             );
+//reg the tmp result of 2nd pipeline
+reg                 nj_mode_r1;
+reg                 op_vld_r1;
+
+reg                 s_tmp_r1;
+reg                 final_m_r1;
+reg [9:0]           exp_tmp_r1;
+reg                 frac_inter_h_s_r1;
+reg [74:0]          frac_inter_r1;
+
+always @ ( posedge clk )
+begin
+    nj_mode_r1          <= nj_mode_r0;
+    op_vld_r1           <= op_vld_r0;
+    s_tmp_r1            <= s_tmp_r0;
+    final_m_r1          <= final_m_r0;
+    exp_tmp_r1          <= exp_tmp_r0;
+    frac_inter_h_s_r1   <= frac_inter_h_s;
+    frac_inter_r1       <= frac_inter;
+end
+//--------------------------------------------
+//special case handle logic
+//--------------------------------------------
+
+
+
+
+//=====================================================================
+// normalization stage,3rd pipeline
+//=====================================================================
+
+wire                s_final;
+wire    [9:0]       exp_norm;
+wire    [26:0]      frac_inter_norm;
+wire                zero_m;
+wire                denorm_m;
+
+norm_stage  norm_stage_inst (
+                            .s_tmp          (   s_tmp_r1            ),
+                            .final_m        (   final_m_r1          ),
+                            .frac_inter_h_s (   frac_inter_h_s_r1   ),
+                            .exp_tmp        (   exp_tmp_r1          ),
+                            .frac_inter     (   frac_inter_r1       ),
+
+                            .s_final        (   s_final             ),
+                            .exp_norm       (   exp_norm            ),
+                            .frac_inter_norm(   frac_inter_norm     ),
+                            .zero_m         (   zero_m              ),//zero mask bit
+                            .denorm_m       (   denorm_m            )//denormal mask signal ,active high
+                            );
+//reg the result of 3rd pipeline
+reg             nj_mode_r2;
+reg             op_vld_r2;
+
+reg             s_final_r2;
+reg [9:0]       exp_norm_r2;
+reg [26:0]      frac_inter_norm_r2;
+reg             zero_m_r2;
+reg             denorm_m_r2;
+
+always @ ( posedge clk )
+begin   
+    nj_mode_r2          <= nj_mode_r1;
+    op_vld_r2           <= op_vld_r1;
+    s_final_r2          <= s_final;
+    exp_norm_r2         <= exp_norm;
+    frac_inter_norm_r2  <= frac_inter_norm;
+    zero_m_r2           <= zero_m;
+    denorm_m_r2         <= denorm_m;
+end
+
+//----------------------------------------
+//special case handle logic
+//----------------------------------------
+
+
+
+
+//=====================================================================
+//rounding stage,4th pipeline
+//=====================================================================
+
+wire    [31:0]  res_w;
+
+round_stage round_stage_inst    (
+                                .nj_mode        (   nj_mode_r2  ),
+                                .s_final        (   s_final_r2  ),
+                                .exp_norm       (   exp_norm_r2 ),
+                                .frac_inter_norm(   frac_inter_norm_r2  ),
+                                .denorm_m       (   denorm_m_r2 ),
+                                .zero_m         (   zero_m_r2   ),
+                                
+                                .res            (   res_w       )
+                                );
+
+
+//------------------------------------------
+//special case handle logic,4rd pipeline
+//------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+endmodule
+
+
+
+
+
+
+
+
+
+
 
 
 
