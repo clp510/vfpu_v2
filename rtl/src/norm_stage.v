@@ -41,8 +41,6 @@ wire    [9:0]       exp_norm_w;
 //-------------------------------------
 assign  s_final = final_m ? s_tmp : ( s_tmp ^ frac_inter_h_s );
 
-//generate the zero_m signal
-assign  zero_m  = ~| frac_inter;
 //---------------------------
 //fractional part logic
 //-----------------------------
@@ -64,7 +62,8 @@ denorm_handler  denorm_handler_inst (
                                     .exp_norm           (   exp_norm_w    ),
 
                                     .frac_inter_norm_t2 (   frac_inter_norm_t2  ),
-                                    .denorm_m           (   denorm_m    )
+                                    .denorm_m           (   denorm_m    ),
+                                    .zero_m             (   zero_m      )
                                     );
 
 //----------------------------

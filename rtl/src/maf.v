@@ -31,8 +31,8 @@ input   [31:0]  a;
 input   [31:0]  b;
 input   [31:0]  c;
 
-output  [31:0]  res;
-output          res_rdy;
+output reg [31:0]  res;
+output reg         res_rdy;
 
 //-----------------------------------------------------------------
 // Unpack the input operand
@@ -71,7 +71,7 @@ unpackage unpackage_c   (
 //-----------------------------------------------
 //main pipeline (1st stage)
 //----------------------------------------------
-wire                    inv_mask;
+wire                    inv_mask;//1'b0:multiply-add operation,1'b1:multiply-minus operation
 wire                    s_tmp;
 wire                    final_m;
 wire    [9:0]           exp_tmp;//bigger one between (ea+eb+27) and (ec)
@@ -102,18 +102,8 @@ mul_stage   mul_stage_inst  (
                             .carry          (   carry       ),
                             .sum            (   sum         ),
                             
-                            .exp_ab         (   exp_ab      )
+                            .exp_ab         (   exp_ab      )//to special case handler
                             );
-
-
-//---------------------------------------------------------
-// special case handle logic pipeline (1st stage)
-//---------------------------------------------------------
-
-
-
-
-
 
 //reg the tmp result of 1st pipeline
 reg         op_vld_r0;
@@ -164,6 +154,54 @@ begin
     end
 end
 
+
+//---------------------------------------------------------
+// special case handle logic pipeline (1st stage)
+//---------------------------------------------------------
+wire            spec_mask;
+wire    [31:0]  res_spec;//special case result
+spec_handler_1st    spec_handler_1st_inst   (
+                                            .nj_mode        (   nj_mode     ),
+                                            .inv_mask       (   inv_mask    ),
+                                            .operand_a      (   a       ),
+                                            .operand_b      (   b       ),
+                                            .operand_c      (   c       ),
+                                            .sa             (   sa          ),
+                                            .sb             (   sb          ),
+                                            .sc             (   sc          ),
+                                            .exp_a_bias          (   ea_bias          ),
+                                            .exp_b_bias          (   eb_bias          ),
+                                            .exp_c_bias          (   ec_bias          ),
+                                            .manti_a        (   a_frac[22:0]     ),
+                                            .manti_b        (   b_frac[22:0]     ),
+                                            .manti_c        (   c_frac[22:0]     ),
+                                            .exp_ab         (   exp_ab          ),
+                                            
+                                            .spec_mask      (   spec_mask       ),//to indicate whether special cases are detected,active high
+                                            .res_spec       (   res_spec        )//special case result
+                                            );
+
+//reg the tmp result of special case pipeline
+reg             spec_mask_r0;
+reg [31:0]      res_spec_r0;
+
+always @ ( posedge clk )
+begin
+    if(op_vld)
+    begin
+        spec_mask_r0    <= spec_mask;
+        res_spec_r0     <= res_spec;
+    end
+    else
+    begin
+        spec_mask_r0    <= 1'b0;
+        res_spec_r0     <= 32'h0;
+    end
+end
+
+
+
+
 //================================================================
 //2nd stage ( add stage )
 //================================================================
@@ -207,6 +245,14 @@ end
 //--------------------------------------------
 //special case handle logic
 //--------------------------------------------
+reg                 spec_mask_r1;
+reg [31:0]          res_spec_r1;
+
+always @ ( posedge clk )
+begin
+    spec_mask_r1        <= spec_mask_r0;
+    res_spec_r1         <= res_spec_r0;
+end
 
 
 
@@ -258,7 +304,14 @@ end
 //----------------------------------------
 //special case handle logic
 //----------------------------------------
+reg             spec_mask_r2;
+reg [31:0]      res_spec_r2;
 
+always @ ( posedge clk )
+begin
+    spec_mask_r2        <= spec_mask_r1;
+    res_spec_r2         <= res_spec_r1;
+end
 
 
 
@@ -283,23 +336,24 @@ round_stage round_stage_inst    (
 //------------------------------------------
 //special case handle logic,4rd pipeline
 //------------------------------------------
+wire            spec_mask_f;
+wire    [31:0]  res_spec_f;
+assign  spec_mask_f     = spec_mask_r2;
+assign  res_spec_f      = res_spec_r2;
 
 
 
+//================================================
+//get the final result of maf
+//================================================
+wire    [31:0]  res_final;
+assign  res_final   = spec_mask_f ? res_spec_f : res_w;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+always @ ( posedge clk )
+begin
+    res     <= res_final;
+    res_rdy <= op_vld_r2;
+end
 
 
 endmodule
