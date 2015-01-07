@@ -138,9 +138,9 @@ assign  overflow_m      = {~exp_ab[8]} & exp_ab[7];//if overflow,the 2 msb must 
 //-------------------------------------------
 
 assign  nan_ecp         = a_nan_m | b_nan_m | c_nan_m;
-assign  res_spec_tmp0   = a_nan_m ? a :
-                          b_nan_m ? b :
-                          c_nan_m ? c : 32'h0;
+assign  res_spec_tmp0   = a_nan_m ? operand_a :
+                          b_nan_m ? operand_b :
+                          c_nan_m ? operand_c : 32'h0;
 //--------------------------------------------
 //invalid operation exception handle logic
 //infinity - infinity or 0 * infinity

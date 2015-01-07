@@ -36,7 +36,7 @@ wire        compen_bit;
 wire        st1;
 sticky_handler  sticky_handler_inst (
                                     .c_frac_align_l (   c_frac_align_l   ),
-                                    inv_mask        (   inv_mask ),
+                                    .inv_mask        (   inv_mask ),
                                     
                                     .compen_bit     (   compen_bit  ),
                                     .st1            (   st1     )

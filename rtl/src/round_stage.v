@@ -43,6 +43,7 @@ wire            tie_m;//tie mask signal,active high
 
 assign  frac_z1                     = frac_inter_norm[26:3];
 assign  {overflow_round,frac_z2}    = frac_z1+24'b1;
+assign  grs                         = frac_inter_norm[2:0];//{guard bit,round bit,sticky bit}
 assign  tie_m                       = ( grs == 3'b100 );
 
 always @ ( * )

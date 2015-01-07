@@ -31,7 +31,7 @@ assign  oppo_ab = sa ^ sb;
 //get the s_tmp and final_m
 always @ ( * )
 begin
-    case    ( { c, oppo_ab } )
+    case    ( { sc, oppo_ab } )
     2'b00   :   begin//
                 s_tmp   =   1'b0;
                 final_m =   1'b1;

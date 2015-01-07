@@ -15,6 +15,7 @@
 //all rights reserved
 //========================================================================
 module maf  (
+            clk,
             nj_mode,//mask signal for operation mode:1--non java mode,0---java mode
             op_vld,//operation valid,active high
             a,
@@ -25,6 +26,7 @@ module maf  (
             res_rdy//result ready signal,active high
             );
 
+input           clk;
 input           nj_mode;
 input           op_vld;
 input   [31:0]  a;
@@ -37,10 +39,23 @@ output reg         res_rdy;
 //-----------------------------------------------------------------
 // Unpack the input operand
 //-----------------------------------------------------------------
+wire                    sa;
+wire                    sb;
+wire                    sc;
+wire    [7:0]           ea_bias;
+wire    [7:0]           eb_bias;
+wire    [7:0]           ec_bias;
+wire    [7:0]           ea;
+wire    [7:0]           eb;
+wire    [7:0]           ec;
+wire    [23:0]          a_frac;
+wire    [23:0]          b_frac;
+wire    [23:0]          c_frac;
 //unpack the operand a
 unpackage unpackage_a   (
                         .nj_mode    ( nj_mode   ),
                         .operand    ( a         ),
+
                         .s          ( sa        ),//sign bit
                         .exp_bias   ( ea_bias   ),//biased exponent,to special case handle logic pipeline
                         .exp        ( ea        ),//exponent without offset,to main logic pipeline
@@ -50,6 +65,7 @@ unpackage unpackage_a   (
 unpackage unpackage_b   (
                         .nj_mode    ( nj_mode   ),
                         .operand    ( b         ),
+
                         .s          ( sb        ),//sign bit
                         .exp_bias   ( eb_bias   ),//biased exponent
                         .exp        ( eb        ),//exponent without offset
@@ -59,6 +75,7 @@ unpackage unpackage_b   (
 unpackage unpackage_c   (
                         .nj_mode    ( nj_mode   ),
                         .operand    ( c         ),
+
                         .s          ( sc        ),//sign bit
                         .exp_bias   ( ec_bias   ),//biased exponent
                         .exp        ( ec        ),//exponent without offset

@@ -31,7 +31,7 @@ input   [74:0]      frac_inter;
 
 output              s_final;
 output  [9:0]       exp_norm;
-output  [26;0]      frac_inter_norm;
+output  [26:0]      frac_inter_norm;
 output              zero_m;
 output              denorm_m;
 
@@ -80,8 +80,8 @@ assign  exp_norm    = exp_norm_w;
 //sticky logic
 //--------------------------------------
 wire        sticky_bit;
-assign  sticky_bit  = | frac_inter_norm_t2[48;0];//reduction or
+assign  sticky_bit  = | frac_inter_norm_t2[48:0];//reduction or
 
 //get the normalized fraction
-assign  frac_inter_norm = {frac_inter_norm_t22[74:49],sticky_bit};
+assign  frac_inter_norm = {frac_inter_norm_t2[74:49],sticky_bit};
 endmodule
