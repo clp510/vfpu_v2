@@ -38,7 +38,7 @@ lza_32 lza_32_0 (
 
 always @ ( * )
 begin
-    if ( count1[5] == 1'b1 )//leading 32 bits are all zero
+    if ( count1[5] )//leading 32 bits are all zero
     begin
         count = 7'd32 + {1'b0,count0};
     end

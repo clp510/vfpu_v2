@@ -49,9 +49,9 @@ lza_8   lza_8_0 (
 
 always @ ( * )
 begin
-    if ( {count3[3],count2[3]} == 2'b11 )
+    if ( & {count3[3],count2[3]} )//==2'b11
     begin
-        if( count1[3] == 1'b1 )
+        if( count1[3] )//==1'b1
         begin
             count = 6'd24 + {2'b00,count0};
         end
@@ -62,7 +62,7 @@ begin
     end
     else
     begin
-        if ( count3[3] == 1'b1 )
+        if ( count3[3] )//==1'b1
         begin
             count = 6'd8 + {2'b00,count2};
         end

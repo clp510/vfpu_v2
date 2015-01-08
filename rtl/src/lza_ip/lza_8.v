@@ -1,7 +1,7 @@
 //===============================================================================
 //              8 bits leading zero anticipator  
 //  ----------------------------------------------------------------------------
-//  File Name            : lza_73.v
+//  File Name            : lza_8.v
 //  File Revision        : 1.0
 //  Author               : clp
 //  Email                 :clp510@tju.edu.cn
@@ -24,11 +24,11 @@ reg		[3:0] count;
 
 always @ ( * )
 begin
-    if ( a[7:4] == 4'b0000 )
+    if ( ~| a[7:4] )//a[7:4] == 4'b0000 ?
     begin
-        if ( a[3:2] == 2'b00)
+        if ( ~| a[3:2]) //a[3:0] == 2'b00 ?
         begin
-            if( a[1] == 1'b0 )
+            if( ~ a[1] )//a[1] == 1'b0 ?
             begin
                 count  = 7 + {~a[0]};
             end
@@ -39,7 +39,7 @@ begin
         end
         else
         begin
-            if ( a[3] == 1'b0 )
+            if ( ~a[3] )//a[3] == 1'b0
             begin
                 count = 5;
             end
@@ -51,9 +51,9 @@ begin
     end
     else
     begin
-        if ( a[7:6] == 2'b00 )
+        if ( ~| a[7:6] )//a[7:6] == 2'b00
         begin
-            if ( a[5] == 1'b0)
+            if ( ~a[5] )//a[5] == 1'b0
             begin
                 count = 3;
             end
@@ -64,7 +64,7 @@ begin
         end
         else
         begin
-            if ( a[7] == 1'b0 )
+            if ( ~a[7] )//a[7] == 1'b0
             begin
                 count = 1;
             end

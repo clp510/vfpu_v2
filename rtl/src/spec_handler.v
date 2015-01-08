@@ -197,7 +197,7 @@ assign  res_spec_tmp5   = (!inf_ecp) ? 32'h0:
 
 //generate output
 assign  spec_mask   = nan_ecp | invalid_ecp | overflow_ecp | underflow_ecp | zero_ecp | inf_ecp;
-assign  res_spec    = res_spec_tmp1 | res_spec_tmp1 | res_spec_tmp2 | res_spec_tmp3 | res_spec_tmp4 | res_spec_tmp5;
+assign  res_spec    = res_spec_tmp0 | res_spec_tmp1 | res_spec_tmp2 | res_spec_tmp3 | res_spec_tmp4 | res_spec_tmp5;
 
 
 endmodule

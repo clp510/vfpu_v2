@@ -38,7 +38,7 @@ lza_64 lza_64_0 (
 
 always @ ( * )
 begin
-    if ( count1[4] == 1'b1 )//leading 16 bits are all zero
+    if ( count1[4] )//leading 16 bits are all zero
     begin
         count = 7'd16 + count0;
     end

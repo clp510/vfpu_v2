@@ -38,7 +38,7 @@ lza_8 lza_8_0 (
 
 always @ ( * )
 begin
-    if ( count1[3] == 1'b1 )//leading 8 bits are all zero
+    if ( count1[3] )//leading 8 bits are all zero
     begin
         count = 5'd8 + {1'b0,count0};
     end
