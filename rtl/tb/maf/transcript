@@ -1,0 +1,369 @@
+# do run.do 
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.5b Compiler 2009.05 May 21 2009
+# -- Compiling module maf_tb
+# -- Compiling module add_stage
+# -- Compiling module align_shf_74
+# -- Compiling module csa4_2
+# -- Compiling module denorm_handler
+# -- Compiling module DW01_csa
+# -- Compiling module exp_adjust
+# -- Compiling module exp_handler
+# -- Compiling module maf
+# -- Compiling module mul_24x24
+# -- Compiling module mul_stage
+# -- Compiling module norm_stage
+# -- Compiling module round_stage
+# -- Compiling module sign_handler
+# -- Compiling module spec_handler
+# -- Compiling module sticky_handler
+# -- Compiling module unpackage
+# -- Compiling module lza_8
+# -- Compiling module lza_16
+# -- Compiling module lza_32
+# -- Compiling module lza_64
+# -- Compiling module lza_80
+# 
+# Top level modules:
+# 	maf_tb
+# vsim -novopt work.maf_tb 
+# //  ModelSim SE 6.5b May 21 2009 Linux 3.2.0-23-generic-pae
+# //
+# //  Copyright 1991-2009 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.maf_tb
+# Loading work.maf_tb
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.maf
+# Loading work.maf
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.unpackage
+# Loading work.unpackage
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.mul_stage
+# Loading work.mul_stage
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.sign_handler
+# Loading work.sign_handler
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.exp_handler
+# Loading work.exp_handler
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.align_shf_74
+# Loading work.align_shf_74
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.mul_24x24
+# Loading work.mul_24x24
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.csa4_2
+# Loading work.csa4_2
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.DW01_csa
+# Loading work.DW01_csa
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.spec_handler
+# Loading work.spec_handler
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.add_stage
+# Loading work.add_stage
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.sticky_handler
+# Loading work.sticky_handler
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.norm_stage
+# Loading work.norm_stage
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.lza_80
+# Loading work.lza_80
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.lza_16
+# Loading work.lza_16
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.lza_8
+# Loading work.lza_8
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.lza_64
+# Loading work.lza_64
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.lza_32
+# Loading work.lza_32
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.denorm_handler
+# Loading work.denorm_handler
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.exp_adjust
+# Loading work.exp_adjust
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/tb/maf/work.round_stage
+# Loading work.round_stage
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+#                    0 corner case :4294967295 
+# nj_mode=x
+# a=0xxxxxxxxx
+# b=0xxxxxxxxx
+# c=0xxxxxxxxx
+# res=0xxxxxxxxx
+# res_rdy=x
+#                   30 corner case :4294967295 
+# nj_mode=1
+# a=0x00000000
+# b=0x00000000
+# c=0x00000000
+# res=0x00000000
+# res_rdy=0
+#                  140 corner case :4294967295 
+# nj_mode=1
+# a=0x40000000
+# b=0x40400000
+# c=0x40800000
+# res=0x41200000
+# res_rdy=1
+#                  150 corner case :         0 
+# nj_mode=1
+# a=0x40000000
+# b=0x40400000
+# c=0x00000000
+# res=0x40c00000
+# res_rdy=1
+#                  160 corner case :         1 
+# nj_mode=1
+# a=0x40000000
+# b=0x40400000
+# c=0xc0c00000
+# res=0x00000000
+# res_rdy=1
+#                  170 corner case :         2 
+# nj_mode=1
+# a=0x00400000
+# b=0x40400000
+# c=0xc0c00000
+# res=0xc0c00000
+# res_rdy=1
+#                  180 corner case :         3 
+# nj_mode=1
+# a=0x7fc00000
+# b=0x40400000
+# c=0xc0c00000
+# res=0x7fc00000
+# res_rdy=1
+#                  190 corner case :         4 
+# nj_mode=1
+# a=0x00000000
+# b=0x40400000
+# c=0xc0c00000
+# res=0xc0c00000
+# res_rdy=1
+#                  200 corner case :         5 
+# nj_mode=1
+# a=0x7f800000
+# b=0x40400000
+# c=0xc0c00000
+# res=0x7f800000
+# res_rdy=1
+#                  210 corner case :         6 
+# nj_mode=1
+# a=0x7f800000
+# b=0x40400000
+# c=0xff800000
+# res=0x7fc00000
+# res_rdy=1
+#                  220 corner case :         7 
+# nj_mode=1
+# a=0x7f800000
+# b=0x00000000
+# c=0xc0c00000
+# res=0x7fc00000
+# res_rdy=1
+#                  230 corner case :         8 
+# nj_mode=1
+# a=0x7f800000
+# b=0x00400000
+# c=0xc0c00000
+# res=0x7fc00000
+# res_rdy=1
+#                  240 corner case :         9 
+# nj_mode=1
+# a=0x78000000
+# b=0x78800002
+# c=0xc0c00000
+# res=0x7f800000
+# res_rdy=1
+#                  250 corner case :        10 
+# nj_mode=1
+# a=0x01000000
+# b=0x01800000
+# c=0xc0c00000
+# res=0xc0c00000
+# res_rdy=1
+#                  260 corner case :        11 
+# nj_mode=1
+# a=0x20000000
+# b=0x20000000
+# c=0x00000000
+# res=0x00800000
+# res_rdy=1
+#                  270 corner case :        12 
+# nj_mode=1
+# a=0x20000000
+# b=0x20000000
+# c=0x80000000
+# res=0x00800000
+# res_rdy=1
+#                  280 corner case :        13 
+# nj_mode=1
+# a=0x20000000
+# b=0x1f800000
+# c=0x00000000
+# res=0x00000000
+# res_rdy=1
+#                  290 corner case :        14 
+# nj_mode=1
+# a=0x5f7fffff
+# b=0x5f800000
+# c=0x00000000
+# res=0x7f7fffff
+# res_rdy=1
+#                  300 corner case :        15 
+# nj_mode=1
+# a=0x5f7fffff
+# b=0x5f800000
+# c=0x3f800000
+# res=0x7f7fffff
+# res_rdy=1
+#                  310 corner case :        16 
+# nj_mode=1
+# a=0x5f7fffff
+# b=0x5f800000
+# c=0x7f000000
+# res=0x7f800000
+# res_rdy=1
+#                  320 corner case :        17 
+# nj_mode=0
+# a=0x40000000
+# b=0x40400000
+# c=0x40800000
+# res=0x41200000
+# res_rdy=1
+#                  330 corner case :        18 
+# nj_mode=0
+# a=0x40000000
+# b=0x40400000
+# c=0x00000000
+# res=0x40c00000
+# res_rdy=1
+#                  340 corner case :        19 
+# nj_mode=0
+# a=0x40000000
+# b=0x40400000
+# c=0xc0c00000
+# res=0x00000000
+# res_rdy=1
+#                  350 corner case :        20 
+# nj_mode=0
+# a=0x00400000
+# b=0x40400000
+# c=0xc0c00000
+# res=0xc0c00000
+# res_rdy=1
+#                  360 corner case :        21 
+# nj_mode=0
+# a=0x7fc00000
+# b=0x40400000
+# c=0xc0c00000
+# res=0x7fc00000
+# res_rdy=1
+#                  370 corner case :        22 
+# nj_mode=0
+# a=0x00000000
+# b=0x40400000
+# c=0xc0c00000
+# res=0xc0c00000
+# res_rdy=1
+#                  380 corner case :        23 
+# nj_mode=0
+# a=0x7f800000
+# b=0x40400000
+# c=0xc0c00000
+# res=0x7f800000
+# res_rdy=1
+#                  390 corner case :        24 
+# nj_mode=0
+# a=0x7f800000
+# b=0x40400000
+# c=0xff800000
+# res=0x7fc00000
+# res_rdy=1
+#                  400 corner case :        25 
+# nj_mode=0
+# a=0x7f800000
+# b=0x00000000
+# c=0xc0c00000
+# res=0x7fc00000
+# res_rdy=1
+#                  410 corner case :        26 
+# nj_mode=0
+# a=0x7f800000
+# b=0x00400000
+# c=0xc0c00000
+# res=0x7f800000
+# res_rdy=1
+#                  420 corner case :        27 
+# nj_mode=0
+# a=0x78000000
+# b=0x78800002
+# c=0xc0c00000
+# res=0x7f800000
+# res_rdy=1
+#                  430 corner case :        28 
+# nj_mode=0
+# a=0x01000000
+# b=0x01800000
+# c=0xc0c00000
+# res=0xc0c00000
+# res_rdy=1
+#                  440 corner case :        29 
+# nj_mode=0
+# a=0x20000000
+# b=0x20000000
+# c=0x00000000
+# res=0x00800000
+# res_rdy=1
+#                  450 corner case :        30 
+# nj_mode=0
+# a=0x20000000
+# b=0x20000000
+# c=0x80000000
+# res=0x00800000
+# res_rdy=1
+#                  460 corner case :        31 
+# nj_mode=0
+# a=0x20000000
+# b=0x1f800000
+# c=0x00000000
+# res=0x00400000
+# res_rdy=1
+#                  470 corner case :        32 
+# nj_mode=0
+# a=0x5f7fffff
+# b=0x5f800000
+# c=0x00000000
+# res=0x7f7fffff
+# res_rdy=1
+#                  480 corner case :        33 
+# nj_mode=0
+# a=0x5f7fffff
+# b=0x5f800000
+# c=0x3f800000
+# res=0x7f7fffff
+# res_rdy=1
+#                  490 corner case :        34 
+# nj_mode=0
+# a=0x5f7fffff
+# b=0x5f800000
+# c=0x7f000000
+# res=0x7f800000
+# res_rdy=1
+#                  500 corner case :        35 
+# nj_mode=0
+# a=0x5f7fffff
+# b=0x5f800000
+# c=0x7f000000
+# res=0x00000000
+# res_rdy=0

@@ -38,9 +38,11 @@ wire    [2:0]   grs;//{guard bit,round bit ,sticky bit}
 wire    [23:0]  frac_z1;
 wire    [23:0]  frac_z2;
 reg     [23:0]  frac_final;//final fraction choose from frac_z1 and frac_z2
+reg             z2_m;//whether choose frac_z2 as final frac,active high
 wire            overflow_round;
 wire            tie_m;//tie mask signal,active high
 
+wire            inf_m;//active high to indicate the exponent is overflow(independent upon special case handle logic)
 assign  frac_z1                     = frac_inter_norm[26:3];
 assign  {overflow_round,frac_z2}    = frac_z1+24'b1;
 assign  grs                         = frac_inter_norm[2:0];//{guard bit,round bit,sticky bit}
@@ -51,15 +53,27 @@ begin
     case    ( tie_m )
     1'b0    : begin//not in tie
                 if ( grs[2] )//>0.5
+                begin
                     frac_final  = frac_z2;
+                    z2_m        = 1'b1;
+                end
                 else//<0.5
+                begin
                     frac_final  = frac_z1;
+                    z2_m        = 1'b0;
+                end
             end
     1'b1    :begin//in case of tie
                 if ( frac_z1[0] )
+                begin
                     frac_final  = frac_z2;
+                    z2_m        = 1'b1;
+                end
                 else
+                begin
                     frac_final  = frac_z1;
+                    z2_m        = 1'b0;
+                end
             end
     endcase
 end
@@ -71,7 +85,7 @@ wire    [7:0]   exp_final;
 
 always @ ( * )
 begin
-    case    ( { denorm_m,overflow_round } )
+    case    ( { denorm_m,{overflow_round&z2_m} } )
     2'b00   :   exp_adjust  = exp_norm + 10'd127;
     2'b01   :   exp_adjust  = exp_norm + 10'd128;
     2'b10   :   exp_adjust  = 10'd0;
@@ -79,13 +93,14 @@ begin
     endcase
 end
 
+assign  inf_m       = & exp_adjust[7:0];//whether exp_adjust is 255
 assign  exp_final   = exp_adjust[7:0];
 
 //---------------------------------------------
 //package logic
 //--------------------------------------------
 wire    [31:0]  res_tmp;
-assign  res_tmp ={s_final,exp_final,frac_final[22:0]};
+assign  res_tmp = inf_m ? {s_final,8'hff,23'h0}:{s_final,exp_final,frac_final[22:0]};
 
 assign  res     = zero_m ?      32'h0 : 
                   {~nj_mode}?   res_tmp:

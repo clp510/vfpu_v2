@@ -30,18 +30,20 @@ reg     [23:0]  frac;
 wire            denorm_m;//denormal number mask signal
 wire            frac_zero_m;//fractional part all zero mask signal
 wire            exp_zero_m;//exponent part all zero
+wire            zero_m;//zero_m signal
 
 assign  s           = operand[31];
 assign  exp_zero_m  = ~| operand[30:23];
 assign  frac_zero_m = ~| operand[22:0];
 assign  denorm_m    = exp_zero_m & ( !frac_zero_m );
+assign  zero_m      = exp_zero_m & frac_zero_m;
 
 //get the frac according to denorm_m and nj_mode bit
 always @ ( * )
 begin
     case ( {denorm_m,nj_mode} )
-    2'b00:  frac    = {1'b1,operand[22:0]};
-    2'b01:  frac    = {1'b1,operand[22:0]};
+    2'b00:  frac    = {{~zero_m},operand[22:0]};
+    2'b01:  frac    = {{~zero_m},operand[22:0]};
     2'b10:  frac    = {1'b0,operand[22:0]};
     2'b11:  frac    = 24'h0;
     endcase

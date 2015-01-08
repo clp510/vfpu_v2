@@ -32,11 +32,11 @@ void vec_print_std(vector_type vec)
 }
 
 //=========================================================================
-#define case2
+#define case4
 #ifdef case1
-vector_type a = { 0x3f800000, 0x3f800000, 0x7f600000, 0x7f800000 };
-vector_type b = { 0x00200000, 0x00200000, 0x42c80000, 0x42c80000 };
-vector_type c = { 0x00400000, 0x80400000, 0x3f800000, 0xff800000 };
+vector_type a = { 0x3f800000, 0x3f800000, 0x00400000, 0x7f800000 };
+vector_type b = { 0x00200000, 0x00200000, 0x40400000, 0x42c80000 };
+vector_type c = { 0x00400000, 0x80400000, 0xc0c00000, 0xff800000 };
 #endif
 
 #ifdef case2
@@ -45,6 +45,17 @@ vector_type b = { 0x80200000, 0x00200000, 0x42c80000, 0x42c80000 };
 vector_type c = { 0x3f800000, 0x3f800000, 0x3f800000, 0xff800000 };
 #endif
 
+#ifdef case3
+vector_type a = { 0x20000000, 0x20000000, 0x00400000, 0x7f800000 };
+vector_type b = { 0x20000000, 0x1f800000, 0x40400000, 0x42c80000 };
+vector_type c = { 0x80000000, 0x00000000, 0xc0c00000, 0xff800000 };
+#endif
+
+#ifdef case4
+vector_type a = { 0x5f7fffff, 0x5f7fffff, 0x5f7fffff, 0x7f800000 };
+vector_type b = { 0x5f800000, 0x5f800000, 0x5f800000, 0x42c80000 };
+vector_type c = { 0x00000000, 0x3f800000, 0x7f000000, 0xff800000 };
+#endif
 vector_type f;
 vector_type vscr_value = {0x0,0x0,0x0,0x0};
 

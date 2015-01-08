@@ -177,7 +177,7 @@ end
 //---------------------------------------------------------
 wire            spec_mask;
 wire    [31:0]  res_spec;//special case result
-spec_handler_1st    spec_handler_1st_inst   (
+spec_handler    spec_handler_inst   (
                                             .nj_mode        (   nj_mode     ),
                                             .inv_mask       (   inv_mask    ),
                                             .operand_a      (   a       ),

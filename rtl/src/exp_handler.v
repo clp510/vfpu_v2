@@ -13,7 +13,7 @@
 module  exp_handler (
                     exp_a,
                     exp_b,
-                    exp_c,//true value of exp
+                    exp_c,//true value of exp,signed value represented by 2's complementory form
 
                     exp_tmp,//9-bit
                     shf_num,
@@ -32,7 +32,7 @@ reg     [6:0]   shf_num;
 //calculate exp_a + exp_b and exp_a+exp_b+27
 wire    [8:0]   exp_ab;//exp_ab in [-254,254]
 wire    [9:0]   exp_ab_27;//exp_a+exp_b+27
-assign  exp_ab      = exp_a + exp_b;
+assign  exp_ab      = {exp_a[7],exp_a} + {exp_b[7],exp_b};//not exp_a + exp_b
 assign  exp_ab_27   = {exp_ab[8],exp_ab} + 10'd27;
 
 //logic to get exp_tmp
