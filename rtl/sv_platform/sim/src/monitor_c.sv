@@ -46,10 +46,16 @@ function    monitor::new    (
 endfunction : new
 
 task    monitor::run();
+
+while( 1 )
+begin
+
     res_data_dc_inst        = dutw2mon_if_inst.res_rdy;
     res_data_dc_inst        = dutw2mon_if_inst.res;
 
     if( res_data_dc_inst.res_rdy == 1 )//current result is ready
         mon2scb.put( res_data_dc );
+end//end while
+
 endtask : run        
                             

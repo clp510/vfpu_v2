@@ -38,14 +38,15 @@ end
 test_dutw_if    test_dutw_if_inst;
 //instance test program
 test    test_inst   (
-                    .clk            (   clk                 ),
+                   // .clk            (   clk                 ),
                    // .rst_n  (   rst_n   ),
                    .test_if_inst    (   test_dutw_if_inst   )
                    );
 //instance dut_wrapper module
 dut_wrapper dut_wrapper_inst    (
-                                .clk            (   clk             ),
+                                //.clk            (   clk             ),
                                 //.rst_n          (   rst_n           ),
                                 .dutw_if_inst   (   test_dutw_if_inst)
                                 );
-endmodule                                
+endmodule                               
+

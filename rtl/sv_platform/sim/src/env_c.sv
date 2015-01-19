@@ -14,9 +14,6 @@
 
 class   env_c;
 
-//Interface declaration
-virtual test_clk_if         test_clk_if_inst;//clk and rst_n interface
-
 stimu_gen_c                 stimu_gen_c_inst;//stimulus generator transactor
 mailbox #( stimu_data_c )   gen2drv_mbx;//mailbox to send stimulus data from stimu_gen_c to driver_c transactor
 driver_c                    driver_c_inst;//driver transactor 
@@ -30,11 +27,10 @@ drv2scb_dc                  drv2scb_dc_inst;//class data from driver to scoreboa
 
 //function and task declaration
 extern  function    new (
-                        input   test_clk_if         test_clk_if_inst,
                         input   test_dutw_if.IN     dutw2mon_if_inst,
                         input   test_dutw_if.OUT    drv2dutw_if_inst
                         );
-extern  task    run();
+extern  task    end_detect();
 
 endclass : env_c
 
@@ -42,12 +38,9 @@ endclass : env_c
 //function and task declaration
 //----------------------------------------------------------
 function    env_c::new(
-                        input   test_clk_if         test_clk_if_inst,
                         input   test_dutw_if.IN     dutw2mon_if_inst,
                         input   test_dutw_if.OUT    drv2dutw_if_inst
                         );
-
-    this.test_clk_if_inst       = test_clk_if_inst;
 
     gen2drv_mbx                 = new();
     mon2scb_mbx                 = new();
@@ -66,13 +59,18 @@ function    env_c::new(
                                         dutw2mon_if_inst,
                                         mon2scb_mbx      
                                         );
+    counter                     = 0;                                        
 
 endfunction : new
 
 //-------------------------------------------------------------
 
-task    env_c::run  ();
+task    env_c::end_detect  ();
 
+if( scb_c_inst.counter >= `MAX_NUM )
+    $stop;
+
+endtask : end_detect    
 
 
 

@@ -46,6 +46,9 @@ endfunction : new
 
 task    driver_c::run   ();
 
+while ( 1 )
+begin
+
 //retrieve data from mailbox
 gen2drv_mbx.get( stimu_data_c_inst );
 
@@ -60,5 +63,7 @@ drv2dutw_if_inst.operand_c  = stimu_data_c_inst.operand_c;
 drv2scb_dc_inst.operand_a   = stimu_data_c_inst.operand_a;
 drv2scb_dc_inst.operand_b   = stimu_data_c_inst.operand_b;
 drv2scb_dc_inst.operand_c   = stimu_data_c_inst.operand_c;
+
+end //end while
 
 endtask : run
