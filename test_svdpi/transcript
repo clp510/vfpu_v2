@@ -18,9 +18,9 @@
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
 # Loading sv_std.std
-# Refreshing /home/clp/clp_root/current_task/2014_second_half/test_sv/work.counter_sv_unit
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/test_svdpi/work.counter_sv_unit
 # Loading work.counter_sv_unit
-# Refreshing /home/clp/clp_root/current_task/2014_second_half/test_sv/work.counter
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/test_svdpi/work.counter
 # Loading work.counter
 # Loading ./counter7.so
 # SV:out=  1,in=126,reset=0,load=0

@@ -10,8 +10,6 @@
 //all rights reserved
 //==================================================================
 module dut_wrapper_m(
-                    input           clk,
-                    //input rst_n,
                     test_dutw_if.D  dutw_if_inst
                     );
 
@@ -19,7 +17,7 @@ module dut_wrapper_m(
 //instance the dut
 
 maf     maf_inst    (
-                    .clk        (   clk                     ),
+                    .clk        (   dutw_if_inst.clk        ),
                     .op_vld     (   dutw_if_inst.op_vld     ),
                     .a          (   dutw_if_inst.operand_a  ),
                     .b          (   dutw_if_inst.operand_b  ),

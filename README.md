@@ -11,5 +11,5 @@ step1:create the .o file
     gcc -c counter.c -o counter.o
 step2:create the shared .so file
     gcc -shared -o counter.so counter.o
-
+(vsim -sv_lib *.so work.* )
 see the directory "./test_svdpi"

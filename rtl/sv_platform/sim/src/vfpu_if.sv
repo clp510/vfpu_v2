@@ -19,8 +19,10 @@ endinterface : test_clk_if
 //interface between SV program and dut_wrapper
 interface   test_dutw_if ;
 
-test_clk_if test_clk_if_inst;//
+BIT         clk;
+BIT         rst_n;
 
+BIT [5:0]   vfpu_ins;//encoding of 16 vfpu instruction
 BIT [31:0]  operand_a;//32-bit sigle-precision data
 BIT [31:0]  operand_b;
 BIT [31:0]  operand_c;
@@ -30,7 +32,10 @@ BIT [31:0]  res;//32-bit single-precision result
 BIT         res_rdy;
 
 modport D   (
-            input   operand_a,
+            input   clk,
+                    //rst_n,
+                    //vfpu_ins,
+                    operand_a,
                     operand_b,
                     operand_c,
                     op_vld,
@@ -38,16 +43,20 @@ modport D   (
                     res_rdy
             );
 modport T   (
-            input   res,
+            input   clk,
+                    res,
                     res_rdy,
-            output  operand_a,
+            output  rst_n,
+                    //vfpu_ins,
+                    operand_a,
                     operand_b,
                     operand_c,
                     op_vld
             );
+
 //define clocking blocks
 //sample input signals
-clocking    in_sample   @( posedge test_clk_if_inst.clk )
+clocking    in_sample   @( posedge clk )
 input           res_rdy;
 input           res;
 endclocking : in_sample
@@ -55,7 +64,7 @@ endclocking : in_sample
 modport IN  ( clocking in_sample );
 
 //drive output signals
-clocking    out_drive   @( posedge test_clk_if_inst.clk )
+clocking    out_drive   @( posedge clk )
 output          op_vld;
 output          operand_a;
 output          operand_b;
