@@ -12,6 +12,20 @@
 //all rights reserved
 //==================================================================
 
+`define MAX_NUM 1000
+
+import  vfpu_dc_pkg::stimu_data_c ;
+import  vfpu_dc_pkg::drv2scb_dc;
+import  vfpu_dc_pkg::res_data_dc;
+import  vfpu_dc_pkg::BIT;
+
+`include    "./src/stimu_gen_c.sv"
+`include    "./src/driver_c.sv"
+`include    "./src/monitor_c.sv"
+`include    "./src/scoreboard_c.sv"
+//`include    "./src/vfpu_if.sv"
+
+
 class   env_c;
 
 stimu_gen_c                 stimu_gen_c_inst;//stimulus generator transactor
@@ -19,17 +33,23 @@ mailbox #( stimu_data_c )   gen2drv_mbx;//mailbox to send stimulus data from sti
 driver_c                    driver_c_inst;//driver transactor 
 
 monitor_c                   monitor_c_inst;//monitor transactor
-mailbox #( res_data_c   )   mon2scb_mbx;//mailbox to send result data from monitor to scoreboard transactor 
+mailbox #( res_data_dc   )   mon2scb_mbx;//mailbox to send result data from monitor to scoreboard transactor 
 scoreboard_c                scb_c_inst;//scoreboard transacotr
 
 //data class declaration
-drv2scb_dc                  drv2scb_dc_inst;//class data from driver to scoreboard
+drv2scb_dc                  drv2scb_dc_inst;//data class from driver to scoreboard
 
+//counter
+//int                         counter;
+
+virtual test_dutw_if.TST    test_if_inst;
 //function and task declaration
-extern  function    new (
-                        input   test_dutw_if.IN     dutw2mon_if_inst,
-                        input   test_dutw_if.OUT    drv2dutw_if_inst
-                        );
+extern  function    new ( input   virtual test_dutw_if.TST  test_if_inst);
+
+//build function 
+extern  function    void build();
+
+//run task
 extern  task    end_detect();
 
 endclass : env_c
@@ -38,36 +58,44 @@ endclass : env_c
 //function and task declaration
 //----------------------------------------------------------
 function    env_c::new(
-                        input   test_dutw_if.IN     dutw2mon_if_inst,
-                        input   test_dutw_if.OUT    drv2dutw_if_inst
+                        input   virtual test_dutw_if.TST    test_if_inst   
                         );
 
-    gen2drv_mbx                 = new();
+    this.test_if_inst           = test_if_inst;
+    $display("new function of env_c\n");
+
+endfunction : new
+
+//build function
+function    void env_c::build ();
+
+    gen2drv_mbx                 = new( 5 );//capcity is  5
     mon2scb_mbx                 = new();
+
     drv2scb_dc_inst             = new();
 
     stimu_gen_c_inst            = new( gen2drv_mbx      );
 
     driver_c_inst               = new( gen2drv_mbx,//communicate with stimu_gen_c_inst
                                        drv2scb_dc_inst,//communicate with scoreboard
-                                       drv2dutw_if_inst//communicate with dut_wrapper
+                                       test_if_inst//communicate with dut_wrapper
                                        );
-    scb_c_inst                  = new( drv2scb_dc_inst,  
-                                       mon2scb_mbx 
-                                       );
+    scb_c_inst                  = new(   
+                                       mon2scb_mbx, 
+                                       drv2scb_dc_inst);
     monitor_c_inst              = new( 
-                                        dutw2mon_if_inst,
-                                        mon2scb_mbx      
+                                        mon2scb_mbx,     
+                                        test_if_inst
                                         );
-    counter                     = 0;                                        
+//    counter                     = 0;                                        
 
-endfunction : new
+endfunction : build
 
 //-------------------------------------------------------------
 
 task    env_c::end_detect  ();
 
-if( scb_c_inst.counter >= `MAX_NUM )
+if( scb_c_inst.counter >= 100000 )
     $stop;
 
 endtask : end_detect    

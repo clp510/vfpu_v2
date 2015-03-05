@@ -11,14 +11,57 @@
 //all rights reserved
 //==================================================================
 package     vfpu_dc_pkg;
+//-----------------------------------------------------------------------------------                                                
+`ifdef  SIM
+    typedef bit BIT;
+`else
+    typedef logic BIT;
+`endif
+
+//=======================================================================================
+//defination of data class stimu_data_c
+class   stimu_data_c;//vfpu stimulus data class
+
+randc   BIT                 op_vld;
+randc   BIT [31:0]  operand_a;
+randc   BIT [31:0]  operand_b;
+randc   BIT [31:0]  operand_c;
+//------------------------------------------
+//constraints defined here
+//------------------------------------------
+constraint  vld_cons{
+                    op_vld  > 1'b0;
+                    }
+constraint  a_cons  {
+                    operand_a[30:23] < 8'hff;
+                    }
+constraint  b_cons  {   
+                    operand_b[30:23] < 8'hff;
+                    }
+constraint  c_cons  {
+                    operand_c[30:23] < 8'hff;
+                    }
+//-------------------------------------------
+endclass : stimu_data_c
+
+//=========================================================================================
+//defination of data class res_data_dc
+class   res_data_dc ;
+
+BIT         res_rdy;
+BIT [31:0]  res;
+
+endclass : res_data_dc
+
+//=========================================================================================
 
 //data class drv2scb_dc
-class   drv2scb_dc  ;
+class   drv2scb_dc;
 BIT [31:0]      operand_a;
 BIT [31:0]      operand_b;
 BIT [31:0]      operand_c;
 endclass : drv2scb_dc
-
+//=========================================================================================
 /*
 //data class drv2dutw_dc
 class   drv2dutw_dc;

@@ -11,22 +11,18 @@
 //Copyright(c)by VLSI lab of Tianjin university
 //all rights reserved
 //==================================================================
-class   res_data_dc ;
 
-BIT         res_rdy;
-BIT [31:0]  res;
-
-endclass : res_data_dc
+import vfpu_dc_pkg::*;
 
 class   monitor_c   ;
 
-virtual test_dutw_if.IN     dutw2mon_if_inst;
+virtual test_dutw_if.TST    dutw2mon_if_inst;
 mailbox #( res_data_dc )    mon2scb_mbx;
 res_data_dc                 res_data_dc_inst;
 
 extern  function new    (
-                        input   mailbox #( res_data_dc ) mon2scb_mbx,
-                        input   test_dutw_if.IN         dutw2mon_if_inst
+                        input   mailbox #( res_data_dc )    mon2scb_mbx,
+                        input   virtual test_dutw_if.TST   test_if_inst 
                         );
 extern  task    run();
 
@@ -35,26 +31,29 @@ endclass : monitor_c
 //------------------------------------------
 //function and task defination
 //------------------------------------------
-function    monitor::new    (
+function    monitor_c::new    (
                         input   mailbox #( res_data_dc ) mon2scb_mbx,
-                        input   test_dutw_if.IN         dutw2mon_if_inst
+                        input   virtual test_dutw_if.TST test_if_inst
                         );
-    this.dutw2mon_if_inst   = dutw2mon_if_inst;
+    this.dutw2mon_if_inst   = test_if_inst;
     this.mon2scb_mbx        = mon2scb_mbx;
 
     res_data_dc_inst        = new();
 endfunction : new
 
-task    monitor::run();
+task    monitor_c::run();
 
-while( 1 )
+while( 1 )//or forever
 begin
 
-    res_data_dc_inst        = dutw2mon_if_inst.res_rdy;
-    res_data_dc_inst        = dutw2mon_if_inst.res;
+    if( res_data_dc_inst.res_rdy == 1'b1 )//current result is ready
+        mon2scb_mbx.put( res_data_dc_inst );//put data into mailbox
 
-    if( res_data_dc_inst.res_rdy == 1 )//current result is ready
-        mon2scb.put( res_data_dc );
+//retrieve data from DUT. use clocking block to syn
+    @(dutw2mon_if_inst.cbt);
+    res_data_dc_inst.res_rdy        = dutw2mon_if_inst.cbt.res_rdy;
+    res_data_dc_inst.res            = dutw2mon_if_inst.cbt.res;
+
 end//end while
 
 endtask : run        

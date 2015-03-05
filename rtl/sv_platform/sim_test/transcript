@@ -1,0 +1,10 @@
+# do run.do 
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.5b Compiler 2009.05 May 21 2009
+# -- Skipping package vfpu_dc_pkg
+# 
+# Top level modules:
+# 	--none--
+# vsim -novopt -sv_lib ref_top vfpu_top_m 
+# ** Error: (vsim-3170) Could not find '/home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim_test/work.vfpu_top_m'.
+# Error loading design

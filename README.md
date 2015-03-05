@@ -13,3 +13,7 @@ step2:create the shared .so file
     gcc -shared -o counter.so counter.o
 (vsim -sv_lib *.so work.* )
 see the directory "./test_svdpi"
+
+2015.01.25
+how to execute shell command in tcl script?
+solution: exec

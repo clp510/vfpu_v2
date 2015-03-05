@@ -13,25 +13,29 @@
 //all rights reserved
 //==================================================================
 
-class   scoreboard_c;
+import vfpu_dc_pkg::res_data_dc;
+import vfpu_dc_pkg::drv2scb_dc;
+import vfpu_dc_pkg::BIT;
 //import c program as reference model  
-import "DPI-C" function void do_vec_vmaddfp    (output bit[127:0]vrt, 
+import "DPI-C" function void do_vec_vmaddfp    (output bit[31:0]vrt, 
 
-                                                input bit[127:0]vra, vrb, vrc);
+                                                input bit[31:0]vra, vrb, vrc);
+
+class   scoreboard_c;
 //-------------------------------------------------------------------
 
 mailbox #( res_data_dc )    mon2scb_mbx;
 drv2scb_dc                  drv2scb_dc_inst;
 res_data_dc                 res_data_dc_hw;//store hardware result data
 BIT [31:0]                  res_sw;//store software result data
-integer                     counter;
+int                         counter;
 //function and task declaration
 extern  function new (
                     input   mailbox #( res_data_dc ) mon2scb_mbx,
                     input   drv2scb_dc              drv2scb_dc_inst
                     );
 
-extern  run ();
+extern  task    run ();
 
 endclass : scoreboard_c
 
@@ -39,7 +43,7 @@ endclass : scoreboard_c
 //function and task defination
 //----------------------------------------------------
 function    scoreboard_c::new (
-                                input   mailbox #( res_data_dc ) mon2scb_mbc,
+                                input   mailbox #( res_data_dc ) mon2scb_mbx,
                                 input   drv2scb_dc              drv2scb_dc_inst
                                 );
 
@@ -50,7 +54,7 @@ function    scoreboard_c::new (
 
 endfunction : new
 
-task    scoreboard::run ();
+task    scoreboard_c::run ();
 
 while ( 1 )
 begin
@@ -58,8 +62,15 @@ begin
 mon2scb_mbx.get( res_data_dc_hw );
 
 //get software result
-do_vec_vmaddfp( {4{res_sw}},{4{drv2scb_dc_inst.operand_a}},{4{drv2scb_dc_inst.operand_b}},{4{drv2scb_dc_inst.operand_c}} );
+do_vec_vmaddfp( res_sw,drv2scb_dc_inst.operand_a,drv2scb_dc_inst.operand_b,drv2scb_dc_inst.operand_c );
+$display("software input operand");
+$display("\
+a=0x%h,\n\
+b=0x%h,\n\
+c=0x%h,\n",drv2scb_dc_inst.operand_a,drv2scb_dc_inst.operand_b,drv2scb_dc_inst.operand_c );
 
+$display("software result:res_sw=0x%h",res_sw);
+    
 //hardware and software result comparison
 if( res_data_dc_hw.res_rdy == 1'b1 )//result is ready
 begin
@@ -70,11 +81,12 @@ begin
     end
     else//mismatch
     begin
-        $sformat( "-------------testcase %d mismatch------------------
-                a = 0x%h,
-                b = 0x%h,
-                c = 0x%h,
- software result  = 0x%h,
+        $display( 
+"-------------testcase %d mismatch------------------\n\
+                a = 0x%h,\n\
+                b = 0x%h,\n\
+                c = 0x%h,\n\
+ software result  = 0x%h,\n\
  hardware result  = 0x%h",counter,drv2scb_dc_inst.operand_a,drv2scb_dc_inst.operand_b,drv2scb_dc_inst.operand_c,res_sw,res_data_dc_hw.res);
     end
 end

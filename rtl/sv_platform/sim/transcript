@@ -1,0 +1,624 @@
+# do run.do 
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.5b Compiler 2009.05 May 21 2009
+# -- Compiling module add_stage
+# -- Compiling module align_shf_74
+# -- Compiling module csa4_2
+# -- Compiling module denorm_handler
+# -- Compiling module DW01_csa
+# -- Compiling module exp_adjust
+# -- Compiling module exp_handler
+# -- Compiling module maf
+# -- Compiling module mul_24x24
+# -- Compiling module mul_stage
+# -- Compiling module norm_stage
+# -- Compiling module round_stage
+# -- Compiling module sign_handler
+# -- Compiling module spec_handler
+# -- Compiling module sticky_handler
+# -- Compiling module unpackage
+# -- Compiling module lza_8
+# -- Compiling module lza_16
+# -- Compiling module lza_32
+# -- Compiling module lza_64
+# -- Compiling module lza_80
+# -- Compiling package vfpu_dc_pkg
+# -- Compiling interface test_dutw_if
+# -- Compiling package vfpu_if_sv_unit
+# -- Importing package vfpu_dc_pkg
+# -- Compiling interface test_dutw_if
+# -- Compiling package dut_wrapper_m_sv_unit
+# -- Importing package vfpu_dc_pkg
+# -- Compiling module dut_wrapper_m
+# -- Compiling package test_p_sv_unit
+# -- Importing package vfpu_dc_pkg
+# -- Compiling program test_p
+# -- Compiling package top_tb_m_sv_unit
+# -- Importing package vfpu_dc_pkg
+# -- Compiling module top_tb_m
+# 
+# Top level modules:
+# 	top_tb_m
+# vsim -novopt -sv_lib ref_top top_tb_m 
+# //  ModelSim SE 6.5b May 21 2009 Linux 3.2.0-23-generic-pae
+# //
+# //  Copyright 1991-2009 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.vfpu_dc_pkg
+# Loading work.vfpu_dc_pkg
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.top_tb_m_sv_unit
+# Loading work.top_tb_m_sv_unit
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.top_tb_m
+# Loading work.top_tb_m
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.vfpu_if_sv_unit
+# Loading work.vfpu_if_sv_unit
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.test_dutw_if
+# Loading work.test_dutw_if
+# ** Warning: (vsim-3009) [TSCALE] - Module 'test_dutw_if' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/test_dutw_if_inst
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.test_p_sv_unit
+# Loading work.test_p_sv_unit
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.test_p
+# Loading work.test_p
+# ** Warning: (vsim-3009) [TSCALE] - Module 'test_p' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/test_p_inst
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.dut_wrapper_m_sv_unit
+# Loading work.dut_wrapper_m_sv_unit
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.dut_wrapper_m
+# Loading work.dut_wrapper_m
+# ** Warning: (vsim-3009) [TSCALE] - Module 'dut_wrapper_m' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.maf
+# Loading work.maf
+# ** Warning: (vsim-3009) [TSCALE] - Module 'maf' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.unpackage
+# Loading work.unpackage
+# ** Warning: (vsim-3009) [TSCALE] - Module 'unpackage' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/unpackage_a
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.mul_stage
+# Loading work.mul_stage
+# ** Warning: (vsim-3009) [TSCALE] - Module 'mul_stage' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/mul_stage_inst
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.sign_handler
+# Loading work.sign_handler
+# ** Warning: (vsim-3009) [TSCALE] - Module 'sign_handler' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/mul_stage_inst/sign_handler_inst
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.exp_handler
+# Loading work.exp_handler
+# ** Warning: (vsim-3009) [TSCALE] - Module 'exp_handler' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/mul_stage_inst/exp_handler_inst
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.align_shf_74
+# Loading work.align_shf_74
+# ** Warning: (vsim-3009) [TSCALE] - Module 'align_shf_74' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/mul_stage_inst/align_shf_74_inst
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.mul_24x24
+# Loading work.mul_24x24
+# ** Warning: (vsim-3009) [TSCALE] - Module 'mul_24x24' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/mul_stage_inst/mul_24x24_inst
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.csa4_2
+# Loading work.csa4_2
+# ** Warning: (vsim-3009) [TSCALE] - Module 'csa4_2' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/mul_stage_inst/mul_24x24_inst/csa4_2_inst00
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.DW01_csa
+# Loading work.DW01_csa
+# ** Warning: (vsim-3009) [TSCALE] - Module 'DW01_csa' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/mul_stage_inst/mul_24x24_inst/csa4_2_inst00/csa_inst0
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.spec_handler
+# Loading work.spec_handler
+# ** Warning: (vsim-3009) [TSCALE] - Module 'spec_handler' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/spec_handler_inst
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.add_stage
+# Loading work.add_stage
+# ** Warning: (vsim-3009) [TSCALE] - Module 'add_stage' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/add_stage_inst
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.sticky_handler
+# Loading work.sticky_handler
+# ** Warning: (vsim-3009) [TSCALE] - Module 'sticky_handler' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/add_stage_inst/sticky_handler_inst
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.norm_stage
+# Loading work.norm_stage
+# ** Warning: (vsim-3009) [TSCALE] - Module 'norm_stage' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/norm_stage_inst
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.lza_80
+# Loading work.lza_80
+# ** Warning: (vsim-3009) [TSCALE] - Module 'lza_80' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/norm_stage_inst/lza_80_inst
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.lza_16
+# Loading work.lza_16
+# ** Warning: (vsim-3009) [TSCALE] - Module 'lza_16' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/norm_stage_inst/lza_80_inst/lza_16_1
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.lza_8
+# Loading work.lza_8
+# ** Warning: (vsim-3009) [TSCALE] - Module 'lza_8' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/norm_stage_inst/lza_80_inst/lza_16_1/lza_8_1
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.lza_64
+# Loading work.lza_64
+# ** Warning: (vsim-3009) [TSCALE] - Module 'lza_64' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/norm_stage_inst/lza_80_inst/lza_64_0
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.lza_32
+# Loading work.lza_32
+# ** Warning: (vsim-3009) [TSCALE] - Module 'lza_32' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/norm_stage_inst/lza_80_inst/lza_64_0/lza_32_1
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.denorm_handler
+# Loading work.denorm_handler
+# ** Warning: (vsim-3009) [TSCALE] - Module 'denorm_handler' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/norm_stage_inst/denorm_handler_inst
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.exp_adjust
+# Loading work.exp_adjust
+# ** Warning: (vsim-3009) [TSCALE] - Module 'exp_adjust' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/norm_stage_inst/exp_adjust_inst
+# Refreshing /home/clp/clp_root/current_task/2014_second_half/vfpu_v2/rtl/sv_platform/sim/work.round_stage
+# Loading work.round_stage
+# ** Warning: (vsim-3009) [TSCALE] - Module 'round_stage' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /top_tb_m/dut_wrapper_m_inst/maf_inst/round_stage_inst
+# Loading ./ref_top.so
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# new function of env_c
+# 
+# after env_c_inst.build
+# 
+# after 5 clk
+# after 5 clk
+# entering stimu_gen_c run task
+# 
+# driver_c
+# ,op_vld=1
+# ,a=102afc34
+# ,b=ca0130e6
+# ,c=871570e5
+# 
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=34887cef
+# ,b=6bc44695
+# ,c=c2fb7dbf
+# 
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=2b73ff46
+# ,b=7b3e9ef5
+# ,c=0848e431
+# 
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=6fa5fcfa
+# ,b=f0830e8a
+# ,c=97af2268
+# 
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=7a0ff91c
+# ,b=7e3e46d4
+# ,c=ed49a10b
+# 
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=46fcfc90
+# ,b=f1db8a6a
+# ,c=189957a4
+# 
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=2529fe23
+# ,b=f16e75ba
+# ,c=c6433b3c
+# 
+# software input operand
+# a=0x2529fe23,
+# b=0xf16e75ba,
+# c=0xc6433b3c,
+# 
+# software result:res_sw=0xf16e75ba
+# -------------testcase           1 mismatch------------------
+#                 a = 0x2529fe23,
+#                 b = 0xf16e75ba,
+#                 c = 0xc6433b3c,
+#  software result  = 0xf16e75ba,
+#  hardware result  = 0x60d14a91
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=99877e9b
+# ,b=f69237ca
+# ,c=8dccdbf1
+# 
+# software input operand
+# a=0x99877e9b,
+# b=0xf69237ca,
+# c=0x8dccdbf1,
+# 
+# software result:res_sw=0xf69237ca
+# -------------testcase           2 mismatch------------------
+#                 a = 0x99877e9b,
+#                 b = 0xf69237ca,
+#                 c = 0x8dccdbf1,
+#  software result  = 0xf69237ca,
+#  hardware result  = 0x6735aef7
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=bc7ef972
+# ,b=ce59bc46
+# ,c=cb260257
+# 
+# software input operand
+# a=0xbc7ef972,
+# b=0xce59bc46,
+# c=0xcb260257,
+# 
+# software result:res_sw=0xce59b1f0
+# -------------testcase           3 mismatch------------------
+#                 a = 0xbc7ef972,
+#                 b = 0xce59bc46,
+#                 c = 0xcb260257,
+#  software result  = 0xce59b1f0,
+#  hardware result  = 0xff800000
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=e0b1e754
+# ,b=cfdaac2a
+# ,c=e6993c35
+# 
+# software input operand
+# a=0xe0b1e754,
+# b=0xcfdaac2a,
+# c=0xe6993c35,
+# 
+# software result:res_sw=0x7f800000
+# test case           4 pass
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=fd7f318d
+# ,b=cf4e5cbe
+# ,c=9c0eb564
+# 
+# software input operand
+# a=0xfd7f318d,
+# b=0xcf4e5cbe,
+# c=0x9c0eb564,
+# 
+# software result:res_sw=0x5a0e424b
+# -------------testcase           5 mismatch------------------
+#                 a = 0xfd7f318d,
+#                 b = 0xcf4e5cbe,
+#                 c = 0x9c0eb564,
+#  software result  = 0x5a0e424b,
+#  hardware result  = 0xf958f4d8
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=cbfaf0ce
+# ,b=ccf34f02
+# ,c=f3af9af7
+# 
+# software input operand
+# a=0xcbfaf0ce,
+# b=0xccf34f02,
+# c=0xf3af9af7,
+# 
+# software result:res_sw=0x7f800000
+# -------------testcase           6 mismatch------------------
+#                 a = 0xcbfaf0ce,
+#                 b = 0xccf34f02,
+#                 c = 0xf3af9af7,
+#  software result  = 0x7f800000,
+#  hardware result  = 0xd71e5871
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=8e2cf8df
+# ,b=cc7c7f96
+# ,c=cc8ec9d4
+# 
+# software input operand
+# a=0x8e2cf8df,
+# b=0xcc7c7f96,
+# c=0xcc8ec9d4,
+# 
+# software result:res_sw=0xcc7c7f96
+# -------------testcase           7 mismatch------------------
+#                 a = 0x8e2cf8df,
+#                 b = 0xcc7c7f96,
+#                 c = 0xcc8ec9d4,
+#  software result  = 0xcc7c7f96,
+#  hardware result  = 0x509ac777
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=a28278b6
+# ,b=cdf16e7a
+# ,c=6a3e8b36
+# 
+# software input operand
+# a=0xa28278b6,
+# b=0xcdf16e7a,
+# c=0x6a3e8b36,
+# 
+# software result:res_sw=0xce294582
+# -------------testcase           8 mismatch------------------
+#                 a = 0xa28278b6,
+#                 b = 0xcdf16e7a,
+#                 c = 0x6a3e8b36,
+#  software result  = 0xce294582,
+#  hardware result  = 0x4a4b6a7e
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=017dfb69
+# ,b=cd121ece
+# ,c=11b2e827
+# 
+# software input operand
+# a=0x017dfb69,
+# b=0xcd121ece,
+# c=0x11b2e827,
+# 
+# software result:res_sw=0xcd121ece
+# -------------testcase           9 mismatch------------------
+#                 a = 0x017dfb69,
+#                 b = 0xcd121ece,
+#                 c = 0x11b2e827,
+#  software result  = 0xcd121ece,
+#  hardware result  = 0x7117f69d
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=65adef01
+# ,b=c2870952
+# ,c=f74eb0cb
+# 
+# software input operand
+# a=0x65adef01,
+# b=0xc2870952,
+# c=0xf74eb0cb,
+# 
+# software result:res_sw=0xff800000
+# -------------testcase          10 mismatch------------------
+#                 a = 0x65adef01,
+#                 b = 0xc2870952,
+#                 c = 0xf74eb0cb,
+#  software result  = 0xff800000,
+#  hardware result  = 0x7f800000
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=7e3eee2c
+# ,b=c2103926
+# ,c=9ae41c70
+# 
+# software input operand
+# a=0x7e3eee2c,
+# b=0xc2103926,
+# c=0x9ae41c70,
+# 
+# software result:res_sw=0xd9aa2155
+# -------------testcase          11 mismatch------------------
+#                 a = 0x7e3eee2c,
+#                 b = 0xc2103926,
+#                 c = 0x9ae41c70,
+#  software result  = 0xd9aa2155,
+#  hardware result  = 0xf3af9af7
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=bc807a13
+# ,b=c3b5298a
+# ,c=c016b755
+# 
+# software input operand
+# a=0xbc807a13,
+# b=0xc3b5298a,
+# c=0xc016b755,
+# 
+# software result:res_sw=0xc3b524d0
+# -------------testcase          12 mismatch------------------
+#                 a = 0xbc807a13,
+#                 b = 0xc3b5298a,
+#                 c = 0xc016b755,
+#  software result  = 0xc3b524d0,
+#  hardware result  = 0xcc8ec9d4
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=132bfaca
+# ,b=c326d81e
+# ,c=0fd3818c
+# 
+# software input operand
+# a=0x132bfaca,
+# b=0xc326d81e,
+# c=0x0fd3818c,
+# 
+# software result:res_sw=0xc326d81e
+# -------------testcase          13 mismatch------------------
+#                 a = 0x132bfaca,
+#                 b = 0xc326d81e,
+#                 c = 0x0fd3818c,
+#  software result  = 0xc326d81e,
+#  hardware result  = 0x6a3e8b36
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=37817aad
+# ,b=c0abc8e2
+# ,c=9526cfe7
+# 
+# software input operand
+# a=0x37817aad,
+# b=0xc0abc8e2,
+# c=0x9526cfe7,
+# 
+# software result:res_sw=0xc0abc8e2
+# -------------testcase          14 mismatch------------------
+#                 a = 0x37817aad,
+#                 b = 0xc0abc8e2,
+#                 c = 0x9526cfe7,
+#  software result  = 0xc0abc8e2,
+#  hardware result  = 0x11ae6067
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=8ed665fc
+# ,b=202a7dbb
+# ,c=78d35d9e
+# 
+# software input operand
+# a=0x8ed665fc,
+# b=0x202a7dbb,
+# c=0x78d35d9e,
+# 
+# software result:res_sw=0xc8310476
+# -------------testcase          15 mismatch------------------
+#                 a = 0x8ed665fc,
+#                 b = 0x202a7dbb,
+#                 c = 0x78d35d9e,
+#  software result  = 0xc8310476,
+#  hardware result  = 0xf74eb0cb
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=7f722bed
+# ,b=21a4f5ed
+# ,c=1e187333
+# 
+# software input operand
+# a=0x7f722bed,
+# b=0x21a4f5ed,
+# c=0x1e187333,
+# 
+# software result:res_sw=0x5e10370f
+# -------------testcase          16 mismatch------------------
+#                 a = 0x7f722bed,
+#                 b = 0x21a4f5ed,
+#                 c = 0x1e187333,
+#  software result  = 0x5e10370f,
+#  hardware result  = 0xff800000
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=41fec81c
+# ,b=21254dd7
+# ,c=2580b915
+# 
+# software input operand
+# a=0x41fec81c,
+# b=0x21254dd7,
+# c=0x2580b915,
+# 
+# software result:res_sw=0x28001ed7
+# -------------testcase          17 mismatch------------------
+#                 a = 0x41fec81c,
+#                 b = 0x21254dd7,
+#                 c = 0x2580b915,
+#  software result  = 0x28001ed7,
+#  hardware result  = 0x4054f54c
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=c42dc9c2
+# ,b=26bfc519
+# ,c=8347e74c
+# 
+# software input operand
+# a=0xc42dc9c2,
+# b=0x26bfc519,
+# c=0x8347e74c,
+# 
+# software result:res_sw=0x26bfc519
+# -------------testcase          18 mismatch------------------
+#                 a = 0xc42dc9c2,
+#                 b = 0x26bfc519,
+#                 c = 0x8347e74c,
+#  software result  = 0x26bfc519,
+#  hardware result  = 0x96e0284f
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=98846759
+# ,b=26345d43
+# ,c=aeaa22a6
+# 
+# software input operand
+# a=0x98846759,
+# b=0x26345d43,
+# c=0xaeaa22a6,
+# 
+# software result:res_sw=0x26345d43
+# -------------testcase          19 mismatch------------------
+#                 a = 0x98846759,
+#                 b = 0x26345d43,
+#                 c = 0xaeaa22a6,
+#  software result  = 0x26345d43,
+#  hardware result  = 0xb8adc517
+# trigged by cbt
+# 
+# driver_c
+# ,op_vld=1
+# ,a=bf7fe730
+# ,b=27b62ab5
+# ,c=e445a261
+# 
+# software input operand
+# a=0xbf7fe730,
+# b=0x27b62ab5,
+# c=0xe445a261,
+# 
+# software result:res_sw=0x64458f39
+# -------------testcase          20 mismatch------------------
+#                 a = 0xbf7fe730,
+#                 b = 0x27b62ab5,
+#                 c = 0xe445a261,
+#  software result  = 0x64458f39,
+#  hardware result  = 0x78d35d9e

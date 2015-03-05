@@ -9,7 +9,10 @@
 //Copyright(c)by VLSI lab of Tianjin university
 //all rights reserved
 //==================================================================
+import  vfpu_dc_pkg::BIT;
+
 module dut_wrapper_m(
+                    input BIT clk,
                     test_dutw_if.D  dutw_if_inst
                     );
 
@@ -17,8 +20,9 @@ module dut_wrapper_m(
 //instance the dut
 
 maf     maf_inst    (
-                    .clk        (   dutw_if_inst.clk        ),
+                    .clk        (   clk                     ),
                     .op_vld     (   dutw_if_inst.op_vld     ),
+                    .nj_mode    (   1'b1                    ),
                     .a          (   dutw_if_inst.operand_a  ),
                     .b          (   dutw_if_inst.operand_b  ),
                     .c          (   dutw_if_inst.operand_c  ),
