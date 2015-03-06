@@ -41,6 +41,17 @@ constraint  b_cons  {
 constraint  c_cons  {
                     operand_c[30:23] < 8'hff;
                     }
+/*
+constraint a_cons {
+                    operand_a inside {32'h3f800000,32'h40000000,32'h40400000};
+                    }
+constraint b_cons {
+                    operand_b inside {32'h3f800000,32'h40000000,32'h40400000};
+                    }
+constraint c_cons {
+                    operand_c inside {32'h3f800000,32'h40000000,32'h40400000};
+                    }
+                    */
 //-------------------------------------------
 endclass : stimu_data_c
 
@@ -48,28 +59,17 @@ endclass : stimu_data_c
 //defination of data class res_data_dc
 class   res_data_dc ;
 
+//registered input signals for software result calculation
+BIT         op_vld_rx;
+BIT [31:0]  operand_a_rx;
+BIT [31:0]  operand_b_rx;
+BIT [31:0]  operand_c_rx;
+
 BIT         res_rdy;
 BIT [31:0]  res;
 
 endclass : res_data_dc
 
 //=========================================================================================
-
-//data class drv2scb_dc
-class   drv2scb_dc;
-BIT [31:0]      operand_a;
-BIT [31:0]      operand_b;
-BIT [31:0]      operand_c;
-endclass : drv2scb_dc
-//=========================================================================================
-/*
-//data class drv2dutw_dc
-class   drv2dutw_dc;
-BIT             op_vld;
-BIT [31:0]      operand_a;
-BIT [31:0]      operand_b;
-BIT [31:0]      operand_c;
-endclass : drv2dutw_dc
-*/
 
 endpackage : vfpu_dc_pkg

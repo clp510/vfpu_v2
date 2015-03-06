@@ -5,7 +5,7 @@
 //Date		: 2015.01.15
 //Revision	: v1.0
 //Description: monitor transactor,
-//  1) sample the result data from DUT through interface
+//  1) sample the result data as well as corresponding inputs from DUT through interface
 //  2) transimit result data to scoreboard through interface
 //------------------------------------------------------------
 //Copyright(c)by VLSI lab of Tianjin university
@@ -53,7 +53,10 @@ begin
     @(dutw2mon_if_inst.cbt);
     res_data_dc_inst.res_rdy        = dutw2mon_if_inst.cbt.res_rdy;
     res_data_dc_inst.res            = dutw2mon_if_inst.cbt.res;
-
+    res_data_dc_inst.op_vld_rx      = dutw2mon_if_inst.cbt.op_vld_rx;
+    res_data_dc_inst.operand_a_rx   = dutw2mon_if_inst.cbt.operand_a_rx;
+    res_data_dc_inst.operand_b_rx   = dutw2mon_if_inst.cbt.operand_b_rx;
+    res_data_dc_inst.operand_c_rx   = dutw2mon_if_inst.cbt.operand_c_rx;
 end//end while
 
 endtask : run        

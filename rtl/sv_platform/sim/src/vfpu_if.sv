@@ -24,6 +24,12 @@ BIT [31:0]  operand_b;
 BIT [31:0]  operand_c;
 BIT         op_vld;
 
+
+BIT         op_vld_rx;
+BIT [31:0]  operand_a_rx;
+BIT [31:0]  operand_b_rx;
+BIT [31:0]  operand_c_rx;
+
 BIT [31:0]  res;//32-bit single-precision result
 BIT         res_rdy;
 
@@ -35,10 +41,15 @@ modport D   (
                     operand_b,
                     operand_c,
                     op_vld,
-            output  res,
+            output  
+                    operand_a_rx,
+                    operand_b_rx,
+                    operand_c_rx,
+                    op_vld_rx,
+                    res,
                     res_rdy
             );
-
+/*
 modport T   (
             input   //clk,
                     res_rdy,
@@ -50,12 +61,16 @@ modport T   (
                     operand_c,
                     op_vld
             );
+            */
 //define clocking blocks
 clocking    cbt   @( posedge clk );
 //input           clk;
 input           res_rdy;
 input           res;
-
+input           operand_a_rx;
+input           operand_b_rx;
+input           operand_c_rx;
+input           op_vld_rx;
 //output          rst_n;
 output          op_vld;
 //outptu        vfpu_ins;

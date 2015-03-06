@@ -15,7 +15,6 @@
 `define MAX_NUM 1000
 
 import  vfpu_dc_pkg::stimu_data_c ;
-import  vfpu_dc_pkg::drv2scb_dc;
 import  vfpu_dc_pkg::res_data_dc;
 import  vfpu_dc_pkg::BIT;
 
@@ -36,11 +35,6 @@ monitor_c                   monitor_c_inst;//monitor transactor
 mailbox #( res_data_dc   )   mon2scb_mbx;//mailbox to send result data from monitor to scoreboard transactor 
 scoreboard_c                scb_c_inst;//scoreboard transacotr
 
-//data class declaration
-drv2scb_dc                  drv2scb_dc_inst;//data class from driver to scoreboard
-
-//counter
-//int                         counter;
 
 virtual test_dutw_if.TST    test_if_inst;
 //function and task declaration
@@ -72,17 +66,15 @@ function    void env_c::build ();
     gen2drv_mbx                 = new( 5 );//capcity is  5
     mon2scb_mbx                 = new();
 
-    drv2scb_dc_inst             = new();
 
     stimu_gen_c_inst            = new( gen2drv_mbx      );
 
     driver_c_inst               = new( gen2drv_mbx,//communicate with stimu_gen_c_inst
-                                       drv2scb_dc_inst,//communicate with scoreboard
                                        test_if_inst//communicate with dut_wrapper
                                        );
     scb_c_inst                  = new(   
-                                       mon2scb_mbx, 
-                                       drv2scb_dc_inst);
+                                       mon2scb_mbx//from monitor transactor 
+                                       );
     monitor_c_inst              = new( 
                                         mon2scb_mbx,     
                                         test_if_inst

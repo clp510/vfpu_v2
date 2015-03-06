@@ -19,11 +19,9 @@ class   driver_c    ;
 mailbox #( stimu_data_c ) gen2drv_mbx;// mailbox
 
 stimu_data_c                stimu_data_c_inst;//receive data from mailbox
-drv2scb_dc                  drv2scb_dc_inst;//data send to scoreboard class
 virtual test_dutw_if.TST    drv2dutw_if_inst;//communicate with dut_wrapper
 extern  function new    (
                         input mailbox #( stimu_data_c )     gen2drv_mbx,
-                        input drv2scb_dc                    drv2scb_dc_inst,
                         input virtual test_dutw_if.TST      test_if_inst
                         );
 extern  task    run ();
@@ -35,11 +33,9 @@ endclass : driver_c
 //---------------------------------------------------
 function    driver_c::new   (
                         input mailbox #( stimu_data_c )     gen2drv_mbx,
-                        input drv2scb_dc                    drv2scb_dc_inst,
                         input virtual test_dutw_if.TST      test_if_inst
                             );
     this.gen2drv_mbx        = gen2drv_mbx;
-    this.drv2scb_dc_inst    = drv2scb_dc_inst;
     this.drv2dutw_if_inst   = test_if_inst;
     this.stimu_data_c_inst  = new();
 endfunction : new
@@ -62,23 +58,17 @@ begin
 gen2drv_mbx.get( stimu_data_c_inst );
 
 //print the retrieved data
-$display("driver_c\n,op_vld=%b\n,a=%h\n,b=%h\n,c=%h\n",stimu_data_c_inst.op_vld,stimu_data_c_inst.operand_a,stimu_data_c_inst.operand_b,stimu_data_c_inst.operand_c);
+//$display("driver_c\n,op_vld=%b\n,a=%h\n,b=%h\n,c=%h\n",stimu_data_c_inst.op_vld,stimu_data_c_inst.operand_a,stimu_data_c_inst.operand_b,stimu_data_c_inst.operand_c);
 
 //send data to dut_wrapper and scoreboard transactor
 @(drv2dutw_if_inst.cbt);
 
-$display("trigged by cbt\n");
 //to dut_wrapper
     drv2dutw_if_inst.cbt.op_vld     <= stimu_data_c_inst.op_vld;
     drv2dutw_if_inst.cbt.operand_a  <= stimu_data_c_inst.operand_a;
     drv2dutw_if_inst.cbt.operand_b  <= stimu_data_c_inst.operand_b;
     drv2dutw_if_inst.cbt.operand_c  <= stimu_data_c_inst.operand_c;
                         
-//to scoreboard
-    drv2scb_dc_inst.operand_a       = stimu_data_c_inst.operand_a;
-    drv2scb_dc_inst.operand_b       = stimu_data_c_inst.operand_b;
-    drv2scb_dc_inst.operand_c       = stimu_data_c_inst.operand_c;
-
 end //end while
 
 endtask : run
