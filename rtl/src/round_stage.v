@@ -93,7 +93,7 @@ begin
     endcase
 end
 
-assign  inf_m       = & exp_adjust[7:0];//whether exp_adjust is 255
+assign  inf_m       = {{~|exp_adjust[9:8]} & {&exp_adjust[7:0]}} || {{~exp_adjust[9]} & exp_adjust[8]} ;//whether exp_adjust is 255 or above
 assign  exp_final   = exp_adjust[7:0];
 
 //---------------------------------------------

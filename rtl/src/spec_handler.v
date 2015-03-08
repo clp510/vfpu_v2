@@ -2,9 +2,10 @@
 //File Name	: spec_handler.v
 //Author	: clp
 //Email		: clp510@tju.edu.cn
-//Date		: 2015.01.07
-//Revision	: v1.0
+//Date		: 2015.03.08
+//Revision	: v2.0
 //Description: special case handler logic
+//Rev2.0    : modify overflow_m detecting condition,exp_ab=128 will not set overflow_m,exp_ab>=129 will set overflow_m.if exp_ab=128,whether this condition cause overflow is detected in main pipeline.
 //two special case defined in design doc are handled in this module
 //------------------------------------------------------------
 //Copyright(c)by VLSI lab of Tianjin university
@@ -129,7 +130,12 @@ assign  c_nan_m         = exp_c_max_m & {~manti_c_zero_m};
 
 assign  diff_126        = {exp_ab[8],exp_ab} + 10'd126;
 assign  underflow_m     = diff_126[9];
-assign  overflow_m      = {~exp_ab[8]} & exp_ab[7];//if overflow,the 2 msb must be 2'b01,means > 127
+/////////////// Rev 1.0/////////////////////////////////////////////
+//assign  overflow_m      = {~exp_ab[8]} & exp_ab[7];//if overflow,the 2 msb must be 2'b01,means > 127
+////////////////////////////////////////////////////////////////////
+
+////////////////Rev2.0///////////////////////////////////
+assign  overflow_m      = {~exp_ab[8]} & exp_ab[7] & { |exp_ab[6:0] };//if exp_ab >=129 then overflow exception must happen
 //----------------------------------------------
 //special case detect order
 //Nan -> invalide -> inf -> zero -> overflow -> underflow

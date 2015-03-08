@@ -1,2 +1,2 @@
 clean:
-	rm *.o *.so work/ transcript -rf
+	rm *.o *.so wlf* work/ transcript -rf

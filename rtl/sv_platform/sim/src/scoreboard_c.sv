@@ -77,6 +77,7 @@ begin
 
     if( res_data_dc_hw.res == res_sw )//match
     begin
+    /*
         $display( 
 "===============testcase %d pass==================\n\
                 a = 0x%h,\n\
@@ -84,6 +85,8 @@ begin
                 c = 0x%h,\n\
  software result  = 0x%h,\n\
  hardware result  = 0x%h\n",counter,res_data_dc_hw.operand_a_rx,res_data_dc_hw.operand_b_rx,res_data_dc_hw.operand_c_rx,res_sw,res_data_dc_hw.res);
+ */
+        $display("=======================testcase %d pass==================",counter);
     end
     else//mismatch
     begin

@@ -22,7 +22,7 @@ module dut_wrapper_m(
 maf     maf_inst    (
                     .clk        (   clk                     ),
                     .op_vld     (   dutw_if_inst.op_vld     ),
-                    .nj_mode    (   1'b1                    ),
+                    .nj_mode    (   1'b0                    ),
                     .a          (   dutw_if_inst.operand_a  ),
                     .b          (   dutw_if_inst.operand_b  ),
                     .c          (   dutw_if_inst.operand_c  ),

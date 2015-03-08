@@ -32,6 +32,8 @@ randc   BIT [31:0]  operand_c;
 constraint  vld_cons{
                     op_vld  > 1'b0;
                     }
+
+                    
 constraint  a_cons  {
                     operand_a[30:23] < 8'hff;
                     }
@@ -43,15 +45,15 @@ constraint  c_cons  {
                     }
 /*
 constraint a_cons {
-                    operand_a inside {32'h3f800000,32'h40000000,32'h40400000};
+                    operand_a inside {32'h6f5011b5};
                     }
 constraint b_cons {
-                    operand_b inside {32'h3f800000,32'h40000000,32'h40400000};
+                    operand_b inside {32'hd06686c5};
                     }
 constraint c_cons {
-                    operand_c inside {32'h3f800000,32'h40000000,32'h40400000};
+                    operand_c inside {32'hcdcf2603};
                     }
-                    */
+ */                   
 //-------------------------------------------
 endclass : stimu_data_c
 
