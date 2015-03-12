@@ -1,0 +1,32 @@
+# do run.do 
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.5b Compiler 2009.05 May 21 2009
+# -- Skipping program counter
+# -- Skipping package counter_sv_unit
+# 
+# Top level modules:
+# 	counter
+# vsim -novopt -sv_lib top counter 
+# //  ModelSim SE 6.5b May 21 2009 Linux 3.2.0-23-generic-pae
+# //
+# //  Copyright 1991-2009 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.counter_sv_unit
+# Loading work.counter
+# Loading ./top.so
+# SV:out=  1,in=126,reset=0,load=0
+# 
+# SV:out=  0,in=126,reset=1,load=0
+# 
+# test vmaddfp
+# SV:vrt=40a00000,vra=3f800000,vrb=40000000,vrc=40400000
+# 
+# SV:vrt=41100000,vra=40000000,vrb=40400000,vrc=40400000
+# 
