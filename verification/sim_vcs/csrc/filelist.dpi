@@ -1,0 +1,4 @@
+DPI_WRAPPER_OBJS += iLIq_1_0x2aB.o
+iLIq_1_0x2aB.o: iLIq_1_0x2aB.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+

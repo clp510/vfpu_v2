@@ -22,7 +22,8 @@ stimu_data_c                stimu_data_c_inst;//receive data from mailbox
 virtual test_dutw_if.TST    drv2dutw_if_inst;//communicate with dut_wrapper
 extern  function new    (
                         input mailbox #( stimu_data_c )     gen2drv_mbx,
-                        input virtual test_dutw_if.TST      test_if_inst
+                        virtual test_dutw_if.TST      test_if_inst
+                        //input test_dutw_if.TST      test_if_inst
                         );
 extern  task    run ();
 
@@ -33,7 +34,7 @@ endclass : driver_c
 //---------------------------------------------------
 function    driver_c::new   (
                         input mailbox #( stimu_data_c )     gen2drv_mbx,
-                        input virtual test_dutw_if.TST      test_if_inst
+                        virtual test_dutw_if.TST      test_if_inst
                             );
     this.gen2drv_mbx        = gen2drv_mbx;
     this.drv2dutw_if_inst   = test_if_inst;

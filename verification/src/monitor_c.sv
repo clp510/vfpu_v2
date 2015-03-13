@@ -22,7 +22,7 @@ res_data_dc                 res_data_dc_inst;
 
 extern  function new    (
                         input   mailbox #( res_data_dc )    mon2scb_mbx,
-                        input   virtual test_dutw_if.TST   test_if_inst 
+                        virtual test_dutw_if.TST test_if_inst 
                         );
 extern  task    run();
 
@@ -33,7 +33,7 @@ endclass : monitor_c
 //------------------------------------------
 function    monitor_c::new    (
                         input   mailbox #( res_data_dc ) mon2scb_mbx,
-                        input   virtual test_dutw_if.TST test_if_inst
+                        virtual test_dutw_if.TST test_if_inst
                         );
     this.dutw2mon_if_inst   = test_if_inst;
     this.mon2scb_mbx        = mon2scb_mbx;

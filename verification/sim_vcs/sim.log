@@ -1,0 +1,28 @@
+Command: ./simv -l sim.log
+Chronologic VCS simulator copyright 1991-2010
+Contains Synopsys proprietary information.
+Compiler version D-2010.06; Runtime version D-2010.06;  Mar 13 09:53 2015
+new function of env_c
+
+after env_c_inst.build
+
+after 5 clk
+after 5 clk
+entering stimu_gen_c run task
+
+===============testcase        1024 pass==================
+                a = 0x481b3026,
+                b = 0x27d07026,
+                c = 0xf55811f7,
+ software result  = 0xf55811f7,
+ hardware result  = 0xf55811f7
+
+===============testcase        2048 pass==================
+                a = 0x80b0ed53,
+                b = 0xb8256d08,
+                c = 0x1888c973,
+ software result  = 0x1888c973,
+ hardware result  = 0x1888c973
+
+Interrupt at time 21500
+

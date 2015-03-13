@@ -19,9 +19,9 @@ import  vfpu_dc_pkg::res_data_dc;
 import  vfpu_dc_pkg::BIT;
 
 `include    "../src/stimu_gen_c.sv"
-`include    "../src/driver_c.sv"
-`include    "../src/monitor_c.sv"
 `include    "../src/scoreboard_c.sv"
+`include    "../src/monitor_c.sv"
+`include    "../src/driver_c.sv"
 //`include    "./src/vfpu_if.sv"
 
 
@@ -38,7 +38,7 @@ scoreboard_c                scb_c_inst;//scoreboard transacotr
 
 virtual test_dutw_if.TST    test_if_inst;
 //function and task declaration
-extern  function    new ( input   virtual test_dutw_if.TST  test_if_inst);
+extern  function    new ( virtual test_dutw_if.TST  test_if_inst);
 
 //build function 
 extern  function    void build();
@@ -52,7 +52,7 @@ endclass : env_c
 //function and task declaration
 //----------------------------------------------------------
 function    env_c::new(
-                        input   virtual test_dutw_if.TST    test_if_inst   
+                        virtual test_dutw_if.TST    test_if_inst   
                         );
 
     this.test_if_inst           = test_if_inst;
