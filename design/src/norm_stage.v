@@ -45,16 +45,26 @@ assign  s_final = final_m ? s_tmp : ( s_tmp ^ frac_inter_h_s );
 //fractional part logic
 //-----------------------------
 //leading zero count
+wire            lz_count_msb;
 wire    [6:0]   lz_count;
-
+/* commit out by clp,2015.03.13
 lza_80  lza_80_inst (
                     .a      (   {frac_inter,5'd0}   ),
                     .count  (   lz_count            )
                     );
+*/
+
+//added by clp,2015.03.13
+DW_lzd  #(75) lzd_75    (
+                        .a  (   frac_inter  ),
+                        .dec (),
+                        .enc(   {lz_count_msb,lz_count}    )
+                        );
+
 //shift left to let the MSB be one
 wire    [74:0]  frac_inter_norm_t1;//after shift left,MSB is 1
 wire    [74:0]  frac_inter_norm_t2;//after denormalization logic,maybe will shift right
-assign  frac_inter_norm_t1  = frac_inter    << lz_count;
+assign  frac_inter_norm_t1  = lz_count_msb ? 75'h0 : (frac_inter    << lz_count);
 
 //instance denorm_handler
 denorm_handler  denorm_handler_inst (

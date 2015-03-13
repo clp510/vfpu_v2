@@ -15,11 +15,7 @@
 ../../design/src/spec_handler.v
 ../../design/src/sticky_handler.v
 ../../design/src/unpackage.v
-../../design/src/lza_ip/lza_8.v
-../../design/src/lza_ip/lza_16.v
-../../design/src/lza_ip/lza_32.v
-../../design/src/lza_ip/lza_64.v
-../../design/src/lza_ip/lza_80.v
+../../design/src/DW_lzd.v
 
 ../src/vfpu_dc_pkg.sv
 ../src/vfpu_if.sv

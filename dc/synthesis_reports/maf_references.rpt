@@ -1,0 +1,70 @@
+ 
+****************************************
+Report : reference
+Design : maf
+Version: B-2008.09
+Date   : Fri Mar 13 11:16:07 2015
+****************************************
+
+Attributes:
+    b - black box (unknown)
+   bo - allows boundary optimization
+    d - dont_touch
+   mo - map_only
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    s - synthetic operator
+    u - contains unmapped logic
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+BUFX3              typical_1v2c25
+                                  8.487000       6     50.922003  
+BUFX4              typical_1v2c25
+                                  8.487000       2     16.974001  
+BUFX6              typical_1v2c25
+                                 11.881800       5     59.408998  
+BUFX8              typical_1v2c25
+                                 13.579200       1     13.579200  
+BUFX16             typical_1v2c25
+                                 23.763599       1     23.763599  
+CLKBUFX2           typical_1v2c25
+                                  6.789600       2     13.579200  
+CLKBUFX3           typical_1v2c25
+                                  6.789600       2     13.579200  
+DFFHQX2            typical_1v2c25
+                                 35.645401       4    142.581604  n
+DFFHQX4            typical_1v2c25
+                                 45.829800      11    504.127796  n
+DFFHQX8            typical_1v2c25
+                                 49.224602      85   4184.091148  n
+DFFQX1             typical_1v2c25
+                                 25.461000      94   2393.334042  n
+DFFQX2             typical_1v2c25
+                                 27.158400       2     54.316799  n
+DFFQX4             typical_1v2c25
+                                 33.948002       1     33.948002  n
+DFFQXL             typical_1v2c25
+                                 25.461000       2     50.922001  n
+DFFTRX1            typical_1v2c25
+                                 28.855801      88   2539.310455  n
+DFFTRX2            typical_1v2c25
+                                 30.553200      11    336.085197  n
+DFFTRX4            typical_1v2c25
+                                 40.737598     142   5784.738976  n
+DFFX4              typical_1v2c25
+                                 42.435001       1     42.435001  n
+MDFFHQX2           typical_1v2c25
+                                 40.737598      32   1303.603149  n
+add_stage                     16549.649948       1  16549.649948  h
+mul_stage                     59149.298119       1  59149.298119  h
+norm_stage                    33530.439852       1  33530.439852  h
+round_stage                    1531.054776       1   1531.054776  h
+spec_handler                   1933.338612       1   1933.338612  h
+unpackage_0                     882.648000       1    882.648000  h
+unpackage_1                    1376.591392       1   1376.591392  h
+unpackage_2                    1308.695404       1   1308.695404  h
+-----------------------------------------------------------------------------
+Total 27 references                                 133823.016474
+1

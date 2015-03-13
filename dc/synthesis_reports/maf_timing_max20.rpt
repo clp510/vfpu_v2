@@ -1,0 +1,37 @@
+ 
+****************************************
+Report : timing
+        -path end
+        -delay max
+        -max_paths 10
+Design : maf
+Version: B-2008.09
+Date   : Fri Mar 13 11:16:07 2015
+****************************************
+
+Operating Conditions: typical_1v2c25   Library: typical_1v2c25
+Wire Load Model Mode: top
+
+Endpoint                         Path Delay     Path Required     Slack
+------------------------------------------------------------------------
+frac_inter_norm_r2_reg_0_/D (DFFHQX8)
+                                    3.76 f            2.91        -0.86
+zero_m_r2_reg/D (DFFX4)             3.73 f            2.87        -0.86
+c_frac_align_m_r0_reg_39_/D (DFFTRX4)
+                                    3.75 f            2.94        -0.82
+c_frac_align_m_r0_reg_22_/D (DFFTRX4)
+                                    3.76 f            2.95        -0.82
+c_frac_align_m_r0_reg_19_/D (DFFTRX4)
+                                    3.76 f            2.94        -0.82
+c_frac_align_l_r0_reg_11_/D (DFFTRX4)
+                                    3.76 f            2.94        -0.81
+c_frac_align_m_r0_reg_9_/D (DFFTRX4)
+                                    3.75 f            2.93        -0.81
+c_frac_align_h_r0_reg_9_/D (DFFTRX4)
+                                    3.74 f            2.93        -0.81
+c_frac_align_m_r0_reg_7_/D (DFFTRX4)
+                                    3.75 f            2.94        -0.81
+c_frac_align_m_r0_reg_23_/D (DFFTRX4)
+                                    3.75 f            2.94        -0.81
+
+1

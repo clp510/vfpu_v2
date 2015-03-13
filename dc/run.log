@@ -1,0 +1,1192 @@
+
+                        DC Professional (TM)
+                           DC Expert (TM)
+                            DC Ultra (TM)
+                       FloorPlan Manager (TM)
+                          HDL Compiler (TM)
+                         VHDL Compiler (TM)
+                        Library Compiler (TM)
+                      DesignWare Developer (TM)
+                          DFT Compiler (TM)
+                            BSD Compiler
+                         Power Compiler (TM)
+
+             Version B-2008.09 for linux -- Aug 25, 2008
+              Copyright (c) 1988-2008 by Synopsys, Inc.
+                         ALL RIGHTS RESERVED
+
+This software and the associated documentation are confidential and 
+proprietary to Synopsys, Inc. Your use or disclosure of this software 
+is subject to the terms and conditions of a written license agreement 
+between you, or your company, and Synopsys, Inc.
+
+The above trademark notice does not imply that you are licensed to use 
+all of the listed products. You are licensed to use only those products 
+for which you have lawfully obtained a valid license key.
+
+Initializing...
+#========================================================
+# Script for Design Compiler
+# Language  : TCL
+# Usage     :
+#           1) make sure the lib in the current directory
+#           2) if you have the file .synopsys_dc.setup,
+#              set synopsys_dc_setup_file 1, 
+#              if not, set synopsys_dc_setup_file 0
+#           3) change Step 3 : Variables to what you want
+#              Especially : top module name, clock name,
+#              reset name, all files name, and period
+#           4) typing dc_shell-t -f run.tcl | tee -i run.log
+#           5) Good Luck!
+#
+# Author    : TanXingliang
+# Date      : 2009.07
+#=========================================================
+# Modified by cuiluping (2013.8.12),resolve the problem of 
+# multiple instance in dc,namely a module can be  instiated 
+# several times with different parameter.
+#========================================================
+set synopsys_dc_setup_file 0
+0
+#-----------------------------------------------------
+# Step 1 :
+# Setting Up path and library
+# If you have edited the file .synopsys_dc.setup,
+# then you can skip over this step
+#-----------------------------------------------------
+if {$synopsys_dc_setup_file == 0} {
+set search_path [list . ${synopsys_root}/libraries/syn ./src  /usr/eda/synopsys/lib/smic13_lib]
+set target_library  {typical_1v2c25.db};                  # if you want use fast library,change to fast.db
+set link_library  [list {*} $target_library dw_foundation.sldb ] 
+set symbol_library  {smic13g.sdb}
+set synthetic_library  {dw_foundation.sldb};    # Design Ware
+set command_log_file   "./command.log"
+}
+./command.log
+#-----------------------------------------------------
+# Step 2 :
+# Compile Swithes
+#-----------------------------------------------------
+set verilogout_no_tri 				 true ;         # if inout used, tri net will be used
+true
+set test_default_scan_style          multiplexed_flip_flop
+multiplexed_flip_flop
+set link_force_case                  case_insensitive
+case_insensitive
+define_name_rules VLSI_NET -allowed "a-zA-Z0-9_" -first_restricted "0-9_" -type net -max_length 256
+1
+define_name_rules VLSI_CELL -allowed "a-zA-Z0-9_" -first_restricted "0-9_" -type cell -max_length 256
+1
+define_name_rules VLSI_PORT -allowed "a-zA-Z0-9_" -first_restricted "0-9_" -type port -max_length 256
+1
+define_name_rules TAN_RULE -allowed "a-zA-Z0-9_" -first_restricted "0-9_\[]" -max_length 256 -map {{{"*cell*", "mycell"}, {"*-return", "myreturn"}}};
+1
+set hdlin_check_no_latch "true"
+true
+set hdlin_merge_nested_conditional_statements "true"
+Information: Variable 'hdlin_merge_nested_conditional_statements' is obsolete and is being ignored. (INFO-100)
+true
+set bus_naming_style       {%s[%d]}
+%s[%d]
+#-----------------------------------------------------
+# Step 3 :
+# Define Variables
+#-----------------------------------------------------
+set active_design "maf";                      # Top module name
+maf
+source files.tcl;                                   # All RTL source_files (verilog)
+
+../design/src/add_stage.v
+../design/src/align_shf_74.v
+../design/src/csa4_2.v
+../design/src/denorm_handler.v
+../design/src/DW01_csa.v
+../design/src/exp_adjust.v
+../design/src/exp_handler.v
+../design/src/maf.v
+../design/src/mul_24x24.v
+../design/src/mul_stage.v
+../design/src/norm_stage.v
+../design/src/round_stage.v
+../design/src/sign_handler.v
+../design/src/spec_handler.v
+../design/src/sticky_handler.v
+../design/src/unpackage.v
+../design/src/DW_lzd.v
+
+
+
+
+
+set clock_name "clk";                           # Name of clock
+clk
+set reset_name "rst_b";                       # Name of reset
+rst_b
+set clk_period 3;                               # Desired Clock Period = 1000/Frequence
+3
+set clk_uncertainty_setup 0.5;                 # Uncertainty of clock
+0.5
+set clk_latency 0.5;                            # Network Latency of clock
+0.5
+set input_delay 0;           # Input Delay of all input ports except clock
+0
+set output_delay 0;        # Output Delay of all output ports
+0
+set area_desired 0;
+0
+set wire_load_model "smic13_wl10";              # Model of the intra net
+smic13_wl10
+set output_load "typical_1v2c25/INVX8/A" ;                # model of the output_load
+typical_1v2c25/INVX8/A
+set synthesis_reports  {synthesis_reports};    #name of report directory
+synthesis_reports
+sh  mkdir $synthesis_reports;
+Error: mkdir: cannot create directory `synthesis_reports': File exists
+	Use error_info for more info. (CMD-013)
+set timing_report       "./$synthesis_reports/$active_design\_timing.rpt"
+./synthesis_reports/maf_timing.rpt
+set timing_max20_report "./$synthesis_reports/$active_design\_timing_max20.rpt"
+./synthesis_reports/maf_timing_max20.rpt
+set area_report         "./$synthesis_reports/$active_design\_area.rpt"
+./synthesis_reports/maf_area.rpt
+set references_report   "./$synthesis_reports/$active_design\_references.rpt"
+./synthesis_reports/maf_references.rpt
+set cell_report         "./$synthesis_reports/$active_design\_cell.rpt"
+./synthesis_reports/maf_cell.rpt
+set constraint_report   "./$synthesis_reports/$active_design\_constraint.rpt"
+./synthesis_reports/maf_constraint.rpt
+set power_report        "./$synthesis_reports/$active_design\_power.rpt"
+./synthesis_reports/maf_power.rpt
+set check_syntax_report "./$synthesis_reports/$active_design\_check_design.rpt"
+./synthesis_reports/maf_check_design.rpt
+set synthesis_netlist  {synthesis_netlist};   #name of outfile directory
+synthesis_netlist
+sh  mkdir $synthesis_netlist;
+Error: mkdir: cannot create directory `synthesis_netlist': File exists
+	Use error_info for more info. (CMD-013)
+set out_netlist         "./$synthesis_netlist/$active_design\_netlist.v";
+./synthesis_netlist/maf_netlist.v
+set out_db              "./$synthesis_netlist/$active_design.db";
+./synthesis_netlist/maf.db
+set out_sdf             "./$synthesis_netlist/$active_design.sdf";
+./synthesis_netlist/maf.sdf
+set out_sdc             "./$synthesis_netlist/$active_design.sdc";
+./synthesis_netlist/maf.sdc
+#-----------------------------------------------------
+# Step 4 :
+# Read design to DC Memory
+#-----------------------------------------------------
+#foreach active_files $files {
+#			read_verilog $active_files
+#}
+define_design_lib work -path ./WORK
+1
+foreach active_files $files {
+			analyze -f verilog $active_files
+}
+Running PRESTO HDLC
+Compiling source file ../design/src/add_stage.v
+Presto compilation completed successfully.
+Loading db file '/usr/eda/synopsys/lib/smic13_lib/typical_1v2c25.db'
+Loading db file '/usr/eda/synopsys/dc/libraries/syn/dw_foundation.sldb'
+Running PRESTO HDLC
+Compiling source file ../design/src/align_shf_74.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ../design/src/csa4_2.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ../design/src/denorm_handler.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ../design/src/DW01_csa.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ../design/src/exp_adjust.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ../design/src/exp_handler.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ../design/src/maf.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ../design/src/mul_24x24.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ../design/src/mul_stage.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ../design/src/norm_stage.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ../design/src/round_stage.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ../design/src/sign_handler.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ../design/src/spec_handler.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ../design/src/sticky_handler.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ../design/src/unpackage.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ../design/src/DW_lzd.v
+Searching for ./DW_lzd_function.inc
+Searching for /usr/eda/synopsys/dc/libraries/syn/DW_lzd_function.inc
+Searching for ./src/DW_lzd_function.inc
+Searching for /usr/eda/synopsys/lib/smic13_lib/DW_lzd_function.inc
+Searching for ../design/src/DW_lzd_function.inc
+Opening include file DW_lzd_function.inc
+Error:  ../design/src/DW_lzd.v:74: Unable to open file `DW_lzd_function.inc': No such file or directory. (VER-292)
+*** Presto compilation terminated with 1 errors. ***
+elaborate $active_design
+Loading db file '/usr/eda/synopsys/dc/libraries/syn/gtech.db'
+Loading db file '/usr/eda/synopsys/dc/libraries/syn/standard.sldb'
+  Loading link library 'typical_1v2c25'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Inferred memory devices in process
+	in routine maf line 142 in file
+		'../design/src/maf.v'.
+=================================================================================
+|     Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+=================================================================================
+|      sum_r0_reg       | Flip-flop |  48   |  Y  | N  | N  | N  | N  | N  | N  |
+|    inv_mask_r0_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|     op_vld_r0_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+| c_frac_align_h_r0_reg | Flip-flop |  26   |  Y  | N  | N  | N  | N  | N  | N  |
+|     carry_r0_reg      | Flip-flop |  48   |  Y  | N  | N  | N  | N  | N  | N  |
+|    nj_mode_r0_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|    exp_tmp_r0_reg     | Flip-flop |  10   |  Y  | N  | N  | N  | N  | N  | N  |
+| c_frac_align_m_r0_reg | Flip-flop |  48   |  Y  | N  | N  | N  | N  | N  | N  |
+|     s_tmp_r0_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+| c_frac_align_l_r0_reg | Flip-flop |  24   |  Y  | N  | N  | N  | N  | N  | N  |
+|    final_m_r0_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+=================================================================================
+
+Inferred memory devices in process
+	in routine maf line 205 in file
+		'../design/src/maf.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  spec_mask_r0_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   res_spec_r0_reg   | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine maf line 369 in file
+		'../design/src/maf.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       res_reg       | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+|     res_rdy_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine maf line 327 in file
+		'../design/src/maf.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  spec_mask_r2_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   res_spec_r2_reg   | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine maf line 252 in file
+		'../design/src/maf.v'.
+=================================================================================
+|     Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+=================================================================================
+|    nj_mode_r1_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|     op_vld_r1_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|    exp_tmp_r1_reg     | Flip-flop |  10   |  Y  | N  | N  | N  | N  | N  | N  |
+| frac_inter_h_s_r1_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|     s_tmp_r1_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|    final_m_r1_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   frac_inter_r1_reg   | Flip-flop |  75   |  Y  | N  | N  | N  | N  | N  | N  |
+=================================================================================
+
+Inferred memory devices in process
+	in routine maf line 268 in file
+		'../design/src/maf.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  spec_mask_r1_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   res_spec_r1_reg   | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine maf line 310 in file
+		'../design/src/maf.v'.
+==================================================================================
+|     Register Name      |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+==================================================================================
+|     nj_mode_r2_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|    exp_norm_r2_reg     | Flip-flop |  10   |  Y  | N  | N  | N  | N  | N  | N  |
+|     op_vld_r2_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|     s_final_r2_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|     zero_m_r2_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+| frac_inter_norm_r2_reg | Flip-flop |  27   |  Y  | N  | N  | N  | N  | N  | N  |
+|    denorm_m_r2_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+==================================================================================
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'maf'.
+Information: Building the design 'unpackage'. (HDL-193)
+
+Statistics for case statements in always block at line 42 in file
+	'../design/src/unpackage.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            44            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'mul_stage'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'spec_handler'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'add_stage'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'norm_stage'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'round_stage'. (HDL-193)
+
+Statistics for case statements in always block at line 51 in file
+	'../design/src/round_stage.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            53            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 86 in file
+	'../design/src/round_stage.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            88            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'sign_handler'. (HDL-193)
+
+Statistics for case statements in always block at line 32 in file
+	'../design/src/sign_handler.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            34            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'exp_handler'. (HDL-193)
+
+Statistics for case statements in always block at line 63 in file
+	'../design/src/exp_handler.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            65            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'align_shf_74'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mul_24x24'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'sticky_handler'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'denorm_handler'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exp_adjust'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'csa4_2' instantiated from design 'mul_24x24' with
+	the parameters "27". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'csa4_2' instantiated from design 'mul_24x24' with
+	the parameters "32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'csa4_2' instantiated from design 'mul_24x24' with
+	the parameters "50". (HDL-193)
+Presto compilation completed successfully.
+1
+current_design $active_design
+Current design is 'maf'.
+{maf}
+#saif_map -start
+# to resolve multiple instances in DC
+uniquify
+Removing uniquified design 'unpackage'.
+Removing uniquified design 'csa4_2_WIDTH27'.
+Removing uniquified design 'csa4_2_WIDTH32'.
+  Uniquified 3 instances of design 'unpackage'.
+  Uniquified 6 instances of design 'csa4_2_WIDTH27'.
+  Uniquified 3 instances of design 'csa4_2_WIDTH32'.
+1
+if {[link] ==0} {
+    echo "Linking Error!";
+    exit;
+}
+
+  Linking design 'maf'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (26 designs)              /root/clp_root/current_tasks/2015_secondhalf/vfpu_v2/dc/maf.db, etc
+  typical_1v2c25 (library)    /usr/eda/synopsys/lib/smic13_lib/typical_1v2c25.db
+  dw_foundation.sldb (library) /usr/eda/synopsys/dc/libraries/syn/dw_foundation.sldb
+
+uniquify
+1
+if {[check_design] == 0} {
+    echo "Check Design Error!";
+    exit;
+}
+Warning: In design 'unpackage_2', input port 'operand[31]' is connected directly to output port 's'. (LINT-29)
+Warning: In design 'spec_handler', port 'sc' is not connected to any nets. (LINT-28)
+Warning: In design 'norm_stage', cell 'B_4' does not drive any nets. (LINT-1)
+Warning: In design 'round_stage', cell 'B_13' does not drive any nets. (LINT-1)
+Warning: In design 'round_stage', cell 'B_14' does not drive any nets. (LINT-1)
+Warning: In design 'round_stage', input port 's_final' is connected directly to output port 'res[31]'. (LINT-29)
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst00' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[26]' is connected to logic 0. 
+   Pin 'a[25]' is connected to logic 0. 
+   Pin 'a[24]' is connected to logic 0. 
+   Pin 'b[26]' is connected to logic 0. 
+   Pin 'b[25]' is connected to logic 0. 
+   Pin 'b[0]' is connected to logic 0. 
+   Pin 'c[26]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst00'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'ci', 'a[26]', 'a[25]', 'a[24]', 'b[26]', 'b[25]', 'b[0]', 'c[26]', 'c[1]', 'c[0]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst01' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[26]' is connected to logic 0. 
+   Pin 'a[25]' is connected to logic 0. 
+   Pin 'a[24]' is connected to logic 0. 
+   Pin 'b[26]' is connected to logic 0. 
+   Pin 'b[25]' is connected to logic 0. 
+   Pin 'b[0]' is connected to logic 0. 
+   Pin 'c[26]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst01'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'ci', 'a[26]', 'a[25]', 'a[24]', 'b[26]', 'b[25]', 'b[0]', 'c[26]', 'c[1]', 'c[0]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst02' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[26]' is connected to logic 0. 
+   Pin 'a[25]' is connected to logic 0. 
+   Pin 'a[24]' is connected to logic 0. 
+   Pin 'b[26]' is connected to logic 0. 
+   Pin 'b[25]' is connected to logic 0. 
+   Pin 'b[0]' is connected to logic 0. 
+   Pin 'c[26]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst02'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'ci', 'a[26]', 'a[25]', 'a[24]', 'b[26]', 'b[25]', 'b[0]', 'c[26]', 'c[1]', 'c[0]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst03' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[26]' is connected to logic 0. 
+   Pin 'a[25]' is connected to logic 0. 
+   Pin 'a[24]' is connected to logic 0. 
+   Pin 'b[26]' is connected to logic 0. 
+   Pin 'b[25]' is connected to logic 0. 
+   Pin 'b[0]' is connected to logic 0. 
+   Pin 'c[26]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst03'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'ci', 'a[26]', 'a[25]', 'a[24]', 'b[26]', 'b[25]', 'b[0]', 'c[26]', 'c[1]', 'c[0]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst04' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[26]' is connected to logic 0. 
+   Pin 'a[25]' is connected to logic 0. 
+   Pin 'a[24]' is connected to logic 0. 
+   Pin 'b[26]' is connected to logic 0. 
+   Pin 'b[25]' is connected to logic 0. 
+   Pin 'b[0]' is connected to logic 0. 
+   Pin 'c[26]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst04'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'ci', 'a[26]', 'a[25]', 'a[24]', 'b[26]', 'b[25]', 'b[0]', 'c[26]', 'c[1]', 'c[0]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst05' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[26]' is connected to logic 0. 
+   Pin 'a[25]' is connected to logic 0. 
+   Pin 'a[24]' is connected to logic 0. 
+   Pin 'b[26]' is connected to logic 0. 
+   Pin 'b[25]' is connected to logic 0. 
+   Pin 'b[0]' is connected to logic 0. 
+   Pin 'c[26]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst05'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'ci', 'a[26]', 'a[25]', 'a[24]', 'b[26]', 'b[25]', 'b[0]', 'c[26]', 'c[1]', 'c[0]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst10' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[31]' is connected to logic 0. 
+   Pin 'a[30]' is connected to logic 0. 
+   Pin 'a[29]' is connected to logic 0. 
+   Pin 'a[28]' is connected to logic 0. 
+   Pin 'b[31]' is connected to logic 0. 
+   Pin 'b[30]' is connected to logic 0. 
+   Pin 'b[29]' is connected to logic 0. 
+   Pin 'b[28]' is connected to logic 0. 
+   Pin 'c[3]' is connected to logic 0. 
+   Pin 'c[2]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[3]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst10'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'ci', 'a[31]', 'a[30]', 'a[29]', 'a[28]', 'b[31]', 'b[30]', 'b[29]', 'b[28]', 'c[3]', 'c[2]', 'c[1]', 'c[0]', 'd[3]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst11' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[31]' is connected to logic 0. 
+   Pin 'a[30]' is connected to logic 0. 
+   Pin 'a[29]' is connected to logic 0. 
+   Pin 'a[28]' is connected to logic 0. 
+   Pin 'b[31]' is connected to logic 0. 
+   Pin 'b[30]' is connected to logic 0. 
+   Pin 'b[29]' is connected to logic 0. 
+   Pin 'b[28]' is connected to logic 0. 
+   Pin 'c[3]' is connected to logic 0. 
+   Pin 'c[2]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[3]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst11'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'ci', 'a[31]', 'a[30]', 'a[29]', 'a[28]', 'b[31]', 'b[30]', 'b[29]', 'b[28]', 'c[3]', 'c[2]', 'c[1]', 'c[0]', 'd[3]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst12' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[31]' is connected to logic 0. 
+   Pin 'a[30]' is connected to logic 0. 
+   Pin 'a[29]' is connected to logic 0. 
+   Pin 'a[28]' is connected to logic 0. 
+   Pin 'b[31]' is connected to logic 0. 
+   Pin 'b[30]' is connected to logic 0. 
+   Pin 'b[29]' is connected to logic 0. 
+   Pin 'b[28]' is connected to logic 0. 
+   Pin 'c[3]' is connected to logic 0. 
+   Pin 'c[2]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[3]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst12'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'ci', 'a[31]', 'a[30]', 'a[29]', 'a[28]', 'b[31]', 'b[30]', 'b[29]', 'b[28]', 'c[3]', 'c[2]', 'c[1]', 'c[0]', 'd[3]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst40' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[49]' is connected to logic 0. 
+   Pin 'a[48]' is connected to logic 0. 
+   Pin 'a[47]' is connected to logic 0. 
+   Pin 'a[46]' is connected to logic 0. 
+   Pin 'a[45]' is connected to logic 0. 
+   Pin 'a[44]' is connected to logic 0. 
+   Pin 'a[43]' is connected to logic 0. 
+   Pin 'a[42]' is connected to logic 0. 
+   Pin 'a[41]' is connected to logic 0. 
+   Pin 'b[49]' is connected to logic 0. 
+   Pin 'b[48]' is connected to logic 0. 
+   Pin 'b[47]' is connected to logic 0. 
+   Pin 'b[46]' is connected to logic 0. 
+   Pin 'b[45]' is connected to logic 0. 
+   Pin 'b[44]' is connected to logic 0. 
+   Pin 'b[43]' is connected to logic 0. 
+   Pin 'b[42]' is connected to logic 0. 
+   Pin 'c[49]' is connected to logic 0. 
+   Pin 'c[7]' is connected to logic 0. 
+   Pin 'c[6]' is connected to logic 0. 
+   Pin 'c[5]' is connected to logic 0. 
+   Pin 'c[4]' is connected to logic 0. 
+   Pin 'c[3]' is connected to logic 0. 
+   Pin 'c[2]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[7]' is connected to logic 0. 
+   Pin 'd[6]' is connected to logic 0. 
+   Pin 'd[5]' is connected to logic 0. 
+   Pin 'd[4]' is connected to logic 0. 
+   Pin 'd[3]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst40'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'ci', 'a[49]', 'a[48]', 'a[47]', 'a[46]', 'a[45]', 'a[44]', 'a[43]', 'a[42]', 'a[41]', 'b[49]', 'b[48]', 'b[47]', 'b[46]', 'b[45]', 'b[44]', 'b[43]', 'b[42]', 'c[49]', 'c[7]', 'c[6]', 'c[5]', 'c[4]', 'c[3]', 'c[2]', 'c[1]', 'c[0]', 'd[7]', 'd[6]', 'd[5]', 'd[4]', 'd[3]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'maf', net 'mul_stage_inst/mul_24x24_inst/carry_30[48]' driven by pin 'mul_stage_inst/mul_24x24_inst/csa4_2_inst40/carry[48]' has no loads. (LINT-2)
+Warning: In design 'maf', net 'mul_stage_inst/mul_24x24_inst/carry_30[49]' driven by pin 'mul_stage_inst/mul_24x24_inst/csa4_2_inst40/carry[49]' has no loads. (LINT-2)
+Warning: In design 'maf', net 'mul_stage_inst/mul_24x24_inst/carry_30[50]' driven by pin 'mul_stage_inst/mul_24x24_inst/csa4_2_inst40/carry[50]' has no loads. (LINT-2)
+Warning: In design 'maf', net 'mul_stage_inst/mul_24x24_inst/sum_30[48]' driven by pin 'mul_stage_inst/mul_24x24_inst/csa4_2_inst40/sum[48]' has no loads. (LINT-2)
+Warning: In design 'maf', net 'mul_stage_inst/mul_24x24_inst/sum_30[49]' driven by pin 'mul_stage_inst/mul_24x24_inst/csa4_2_inst40/sum[49]' has no loads. (LINT-2)
+Warning: In design 'maf', net 'mul_stage_inst/mul_24x24_inst/sum_30[50]' driven by pin 'mul_stage_inst/mul_24x24_inst/csa4_2_inst40/sum[50]' has no loads. (LINT-2)
+Warning: In design 'unpackage_0', input port 'operand[31]' is connected directly to output port 's'. (LINT-29)
+Warning: In design 'unpackage_1', input port 'operand[31]' is connected directly to output port 's'. (LINT-29)
+#check_design > $check_syntax_report
+#-----------------------------------------------------
+# Step 5 :
+# Constraint 
+#-----------------------------------------------------
+set_operating_conditions "typical_1v2c25"
+Using operating conditions 'typical_1v2c25' found in library 'typical_1v2c25'.
+1
+#-----Net load------
+#set_max_transition 6 $active_design
+set_wire_load_model -name $wire_load_model
+1
+set_wire_load_mode top
+1
+#-----clock------
+create_clock -name $clock_name -period [expr $clk_period] [get_ports $clock_name]
+1
+set_clock_uncertainty -setup $clk_uncertainty_setup [get_clocks $clock_name]
+1
+set_clock_latency $clk_latency [get_clocks $clock_name]
+1
+set_dont_touch_network [get_clocks $clock_name]
+1
+#set_dont_touch_network [get_ports $reset_name]
+#set_ideal_network [get_ports $reset_name]
+#-----drive------
+set_drive 0 [get_ports $clock_name]
+1
+set_drive 0 [get_ports $reset_name]
+Warning: Can't find port 'rst_b' in design 'maf'. (UID-95)
+Error: Value for list 'port_list' must have 1 elements. (CMD-036)
+0
+#-----input/output delay------
+set_input_delay [expr $input_delay] -clock $clock_name [all_inputs]
+1
+remove_input_delay [get_ports $clock_name ]
+1
+set_output_delay [expr $output_delay] -clock $clock_name [all_outputs]
+1
+#-----Output load------
+set_load [expr [load_of $output_load]*5] [all_outputs]
+1
+#----- Area ------
+set_max_area $area_desired
+1
+#----- insert buffer replace assign ------
+set_fix_multiple_port_nets -all -buffer_constants
+1
+set compile_implementation_selection "true"
+true
+set compile_disable_hierarchical_inverter_opt "true"
+true
+#-----------------------------------------------------
+# Step 6 :
+# Compile 
+# Also can use compile_ultra
+#-----------------------------------------------------
+compile -map_effort high
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library       |      Version       | Available |
+============================================================================
+| Basic DW Building Blocks                | B-2008.09-DWBB_0809 |    *     |
+| Licensed DW Building Blocks             | B-2008.09-DWBB_0809 |    *     |
+============================================================================
+
+
+Information: There are 34 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'round_stage'
+  Processing 'exp_adjust'
+  Processing 'denorm_handler'
+  Processing 'norm_stage'
+  Processing 'sticky_handler'
+  Processing 'add_stage'
+  Processing 'spec_handler'
+  Processing 'csa4_2_WIDTH50'
+  Processing 'csa4_2_WIDTH32_0'
+  Processing 'csa4_2_WIDTH27_0'
+  Processing 'mul_24x24'
+  Processing 'align_shf_74'
+  Processing 'exp_handler'
+  Processing 'sign_handler'
+  Processing 'mul_stage'
+  Processing 'unpackage_0'
+  Processing 'maf'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'round_stage_DW01_add_0'
+  Processing 'round_stage_DW01_add_1'
+  Processing 'round_stage_DW01_inc_0'
+  Mapping 'norm_stage_DW_leftsh_0'
+  Allocating blocks in 'DW_lzd_a_width75'
+  Allocating blocks in 'DW_lzod_a_width75_detect_10'
+  Processing 'norm_stage_DW_lzd_0'
+  Processing 'exp_adjust_DW01_add_0'
+  Mapping 'denorm_handler_DW_rightsh_0'
+  Processing 'denorm_handler_DW01_add_0'
+  Processing 'add_stage_DW01_sub_0'
+  Processing 'add_stage_DW01_inc_0'
+  Processing 'add_stage_DW01_add_0'
+  Processing 'add_stage_DW01_csa_0'
+  Processing 'spec_handler_DW01_add_0'
+  Processing 'mul_24x24_DW01_csa_0'
+  Processing 'mul_24x24_DW01_csa_1'
+  Processing 'csa4_2_WIDTH50_DW01_csa_0'
+  Processing 'csa4_2_WIDTH50_DW01_csa_1'
+  Processing 'csa4_2_WIDTH32_0_DW01_csa_0'
+  Processing 'csa4_2_WIDTH32_0_DW01_csa_1'
+  Processing 'csa4_2_WIDTH32_1_DW01_csa_0'
+  Processing 'csa4_2_WIDTH32_1_DW01_csa_1'
+  Processing 'csa4_2_WIDTH32_2_DW01_csa_0'
+  Processing 'csa4_2_WIDTH32_2_DW01_csa_1'
+  Processing 'csa4_2_WIDTH27_0_DW01_csa_0'
+  Processing 'csa4_2_WIDTH27_0_DW01_csa_1'
+  Processing 'csa4_2_WIDTH27_1_DW01_csa_0'
+  Processing 'csa4_2_WIDTH27_1_DW01_csa_1'
+  Processing 'csa4_2_WIDTH27_2_DW01_csa_0'
+  Processing 'csa4_2_WIDTH27_2_DW01_csa_1'
+  Processing 'csa4_2_WIDTH27_3_DW01_csa_0'
+  Processing 'csa4_2_WIDTH27_3_DW01_csa_1'
+  Processing 'csa4_2_WIDTH27_4_DW01_csa_0'
+  Processing 'csa4_2_WIDTH27_4_DW01_csa_1'
+  Processing 'csa4_2_WIDTH27_5_DW01_csa_0'
+  Processing 'csa4_2_WIDTH27_5_DW01_csa_1'
+  Mapping 'align_shf_74_DW_rightsh_0'
+Information: Added key list 'DesignWare' to design 'align_shf_74'. (DDB-72)
+  Mapping 'align_shf_74_DW_rightsh_1'
+  Processing 'exp_handler_DW01_add_0'
+  Processing 'exp_handler_DW01_add_1'
+  Processing 'exp_handler_DW01_add_2'
+  Processing 'exp_handler_DW01_add_3'
+  Processing 'unpackage_0_DW01_add_0'
+  Processing 'unpackage_1_DW01_add_0'
+  Processing 'unpackage_2_DW01_add_0'
+  Processing 'exp_handler_DW01_add_4'
+  Processing 'exp_handler_DW01_add_5'
+  Processing 'denorm_handler_DW01_sub_0'
+  Processing 'denorm_handler_DW01_add_1'
+
+  Beginning Mapping Optimizations  (High effort)
+  -------------------------------
+  Allocating blocks in 'DW_lzd_a_width75'
+  Mapping Optimization (Phase 1)
+  Mapping Optimization (Phase 2)
+  Mapping Optimization (Phase 3)
+  Mapping Optimization (Phase 4)
+  Mapping Optimization (Phase 5)
+  Mapping Optimization (Phase 6)
+  Mapping Optimization (Phase 7)
+
+   ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
+    TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:01:10  922098.1      1.31     272.1       1.0                          
+    0:01:16  814716.9      4.87    1033.3       9.5                          
+    0:01:21  812206.2      4.45     961.9       5.5                          
+    0:01:23  812068.6      4.33     959.6       5.3                          
+    0:01:24  812794.2      4.27     947.7       5.3                          
+    0:01:25  812851.0      4.27     968.6       5.3                          
+    0:01:26  813515.4      4.19     939.8       5.3                          
+    0:01:27  814237.4      4.05     960.0       5.3                          
+    0:01:28  814592.1      3.88     918.3       3.0                          
+    0:01:29  815279.4      3.84     924.2       3.0                          
+    0:01:29  815441.5      3.82     894.4       3.0                          
+    0:01:30  815502.6      3.76     892.9       3.0                          
+    0:01:30  815808.9      3.73     891.4       3.0                          
+    0:01:30  816716.9      3.60     870.7       3.0                          
+    0:01:30  817026.6      3.57     870.2       3.0                          
+    0:01:31  817578.1      3.55     869.5       3.0                          
+    0:01:31  817896.3      3.51     864.8       2.7                          
+    0:01:31  818733.8      3.46     863.7       2.7                          
+    0:01:32  819332.9      3.45     857.0       2.7                          
+    0:01:32  819729.2      3.44     855.5       2.7                          
+    0:01:32  818293.2      3.44     855.5       2.7                          
+    0:01:32  818293.2      3.44     855.5       2.7                          
+    0:01:32  818398.4      3.44     854.0       0.0                          
+    0:01:32  818410.2      3.44     853.0       0.0                          
+    0:01:32  818410.2      3.44     853.0       0.0                          
+    0:01:32  818410.2      3.44     853.0       0.0                          
+    0:01:32  818410.2      3.44     853.0       0.0                          
+    0:01:48  846653.2      1.80     569.0       0.4 c_frac_align_m_r0_reg[37]/D
+    0:02:03  854995.8      1.44     470.3       0.5                          
+    0:02:07  857379.6      1.37     451.1       0.7                          
+    0:02:10  859720.9      1.31     434.8       0.7                          
+    0:02:15  862140.4      1.24     417.8       1.0                          
+    0:02:18  863898.8      1.21     403.0       1.0                          
+    0:02:20  865024.9      1.21     383.1       1.0                          
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+   ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
+    TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:02:20  865024.9      1.21     383.1       1.0                          
+    0:02:24  865474.7      1.18     382.6       1.0 frac_inter_norm_r2_reg[0]/D
+    0:02:26  865757.4      1.16     382.1       1.0 frac_inter_norm_r2_reg[0]/D
+    0:02:30  866258.9      1.13     375.9       1.2 zero_m_r2_reg/D          
+    0:02:34  867714.4      1.11     368.4       1.2 c_frac_align_m_r0_reg[41]/D
+    0:02:38  868994.9      1.09     358.7       0.8 zero_m_r2_reg/D          
+    0:02:41  870166.1      1.07     353.3       0.8 zero_m_r2_reg/D          
+    0:02:43  870861.1      1.07     351.4       0.8 c_frac_align_h_r0_reg[2]/D
+    0:02:45  871403.3      1.06     350.6       0.9 frac_inter_norm_r2_reg[0]/D
+    0:02:48  873189.7      1.04     344.9       1.0 c_frac_align_m_r0_reg[47]/D
+    0:02:52  875530.2      1.03     339.3       1.2 frac_inter_norm_r2_reg[0]/D
+    0:02:55  877519.2      1.01     334.0       1.4 frac_inter_norm_r2_reg[0]/D
+    0:02:58  878543.6      0.99     329.6       1.4 frac_inter_norm_r2_reg[0]/D
+    0:03:00  880422.2      0.97     320.3       1.4 frac_inter_norm_r2_reg[0]/D
+    0:03:02  881583.1      0.96     317.0       2.3 frac_inter_norm_r2_reg[0]/D
+    0:03:04  882395.1      0.94     312.9       3.2 frac_inter_norm_r2_reg[0]/D
+    0:03:06  883328.6      0.92     309.6       4.4 c_frac_align_h_r0_reg[7]/D
+    0:03:08  884383.4      0.91     305.8       6.1 frac_inter_r1_reg[57]/D  
+    0:03:10  884666.0      0.91     304.8       6.1 frac_inter_norm_r2_reg[0]/D
+    0:03:11  884588.8      0.90     304.1       6.1 frac_inter_norm_r2_reg[0]/D
+    0:03:25  884788.2      0.90     304.1       6.1 frac_inter_norm_r2_reg[0]/D
+    0:03:29  885013.9      0.90     303.5       6.1 frac_inter_norm_r2_reg[0]/D
+    0:03:34  885859.9      0.90     300.4       6.1 frac_inter_norm_r2_reg[0]/D
+    0:03:35  886021.1      0.89     298.5       5.8 frac_inter_norm_r2_reg[0]/D
+    0:03:43  886014.4      0.89     298.2       5.8                          
+    0:03:44  885868.4      0.89     298.6       6.3                          
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_capacitance)
+  ----------------------------
+
+   ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
+    TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:03:44  885868.4      0.89     298.6       6.3                          
+    0:03:48  888326.8      0.87     293.8       0.1 c_frac_align_h_r0_reg[5]/D
+    0:03:51  889448.6      0.86     286.0       0.1 mul_stage_inst/align_shf_74_inst/net49506
+    0:03:53  889617.5      0.86     285.9       0.0                          
+    0:03:55  890427.1      0.86     276.5       0.0                          
+    0:03:57  891547.2      0.86     270.5       0.0                          
+    0:03:59  891991.1      0.86     265.9       0.0                          
+    0:04:01  892961.2      0.86     253.6       0.0                          
+    0:04:03  894426.9      0.86     243.4       0.0                          
+
+
+  Beginning Area-Recovery Phase  (max_area 0)
+  -----------------------------
+
+   ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
+    TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:04:03  894426.9      0.86     243.4       0.0                          
+    0:04:03  894426.9      0.86     243.4       0.0                          
+    0:04:04  885841.4      0.86     241.3       0.0                          
+    0:04:04  884409.1      0.86     241.0       0.0                          
+    0:04:04  883731.2      0.86     241.0       0.0                          
+    0:04:04  883267.9      0.87     240.9       0.0                          
+    0:04:04  882975.1      0.87     240.9       0.0                          
+    0:04:04  882975.1      0.87     240.9       0.0                          
+    0:04:05  882975.1      0.87     240.9       0.0                          
+    0:04:06  881014.6      0.94     243.7       0.0                          
+    0:04:07  880483.3      0.94     244.2       0.0                          
+    0:04:07  880454.5      0.94     244.2       0.0                          
+    0:04:07  880454.5      0.94     244.2       0.0                          
+    0:04:07  880454.5      0.94     244.2       0.0                          
+    0:04:07  880454.5      0.94     244.2       0.0                          
+    0:04:07  880454.5      0.94     244.2       0.0                          
+    0:04:07  880454.5      0.94     244.2       0.0                          
+    0:04:11  879527.1      0.86     250.0       0.0                          
+    0:04:14  875124.9      0.86     246.9       0.0                          
+    0:04:16  874651.4      0.88     248.9       0.0                          
+    0:04:16  874588.6      0.88     248.9       0.0                          
+    0:04:16  874588.6      0.88     248.9       0.0                          
+    0:04:16  874588.6      0.88     248.9       0.0                          
+    0:04:16  874588.6      0.88     248.9       0.0                          
+    0:04:16  874588.6      0.88     248.9       0.0                          
+    0:04:16  874588.6      0.88     248.9       0.0                          
+    0:04:19  875031.6      0.86     248.8       0.0 frac_inter_norm_r2_reg[0]/D
+    0:04:20  874565.7      0.86     248.9       0.0                          
+    0:04:26  873615.4      0.86     249.8       0.0                          
+    0:04:30  872844.1      0.86     247.9       0.0                          
+    0:04:33  871836.9      0.86     246.7       0.0                          
+    0:04:36  871522.1      0.86     246.9       0.0                          
+    0:04:37  871077.4      0.86     246.9       0.0                          
+    0:04:39  870591.2      0.86     246.8       0.0                          
+    0:04:39  870417.3      0.86     246.7       0.0                          
+    0:04:40  870231.4      0.86     246.6       0.0                          
+    0:04:41  870052.4      0.86     246.6       0.0                          
+    0:04:41  870040.6      0.86     246.4       0.0                          
+    0:04:42  869844.5      0.86     246.3       0.0                          
+    0:04:42  869677.4      0.86     246.2       0.0                          
+    0:04:42  869677.4      0.86     246.2       0.0                          
+    0:04:42  869677.4      0.86     246.2       0.0                          
+    0:04:44  869215.7      0.90     246.6       0.0                          
+    0:04:44  869149.4      0.90     246.6       0.0                          
+    0:04:44  869149.4      0.90     246.6       0.0                          
+    0:04:44  869149.4      0.90     246.6       0.0                          
+    0:04:44  869149.4      0.90     246.6       0.0                          
+    0:04:44  869149.4      0.90     246.6       0.0                          
+    0:04:44  869149.4      0.90     246.6       0.0                          
+    0:04:48  869466.0      0.86     245.9       0.0                          
+    0:04:49  870133.8      0.86     243.9       0.0                          
+    0:04:51  870356.2      0.86     241.7       0.0                          
+    0:04:52  870685.5      0.86     240.7       0.0                          
+    0:04:53  871833.7      0.86     233.9       0.0                          
+    0:04:55  872840.9      0.86     229.4       0.0 frac_inter_norm_r2_reg[0]/D
+    0:04:57  872824.0      0.86     229.4       0.0 frac_inter_norm_r2_reg[0]/D
+    0:04:58  872326.8      0.86     229.4       0.0                          
+Loading db file '/usr/eda/synopsys/lib/smic13_lib/typical_1v2c25.db'
+
+  Optimization Complete
+  ---------------------
+1
+#-----------------------------------------------------
+# Step 7 :
+# Reports (Timing, Area ...)
+#-----------------------------------------------------
+set verilogout_show_unconnected_pins    ture;
+ture
+remove_unconnected_ports [get_cells -hier {*}]
+Removing port 'CI' from design 'exp_handler_DW01_add_10'
+Removing port 'CO' from design 'exp_handler_DW01_add_10'
+Removing port 'CI' from design 'exp_handler_DW01_add_13'
+Removing port 'CO' from design 'exp_handler_DW01_add_13'
+Removing port 'CI' from design 'exp_handler_DW01_add_14'
+Removing port 'CO' from design 'exp_handler_DW01_add_14'
+Removing port 'A[74]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[73]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[72]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[71]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[70]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[69]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[68]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[67]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[66]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[65]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[64]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[63]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[62]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[61]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[60]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[59]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[58]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[57]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[56]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[55]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[54]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[53]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[52]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[51]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[50]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[49]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[48]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[47]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[46]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[45]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[44]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[43]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[42]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[41]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[40]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[39]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[38]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[37]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[36]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[35]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[34]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[33]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[32]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[31]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[30]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[29]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[28]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[27]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[26]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[25]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[24]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[23]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[22]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[21]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[20]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[19]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[18]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[17]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[16]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[15]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[14]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[13]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[12]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[11]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[10]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[9]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[8]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[7]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[6]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[5]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[4]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[3]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[2]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[1]' from design 'add_stage_DW01_sub_1'
+Removing port 'A[0]' from design 'add_stage_DW01_sub_1'
+Removing port 'CI' from design 'add_stage_DW01_sub_1'
+Removing port 'CO' from design 'add_stage_DW01_sub_1'
+Removing port 'CI' from design 'add_stage_DW01_add_2'
+Removing port 'CO' from design 'add_stage_DW01_add_2'
+Removing port 'DATA_TC' from design 'denorm_handler_DW_rightsh_7'
+Removing port 'dec[74]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[73]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[72]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[71]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[70]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[69]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[68]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[67]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[66]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[65]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[64]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[63]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[62]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[61]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[60]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[59]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[58]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[57]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[56]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[55]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[54]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[53]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[52]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[51]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[50]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[49]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[48]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[47]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[46]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[45]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[44]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[43]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[42]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[41]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[40]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[39]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[38]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[37]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[36]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[35]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[34]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[33]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[32]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[31]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[30]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[29]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[28]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[27]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[26]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[25]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[24]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[23]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[22]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[21]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[20]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[19]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[18]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[17]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[16]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[15]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[14]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[13]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[12]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[11]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[10]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[9]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[8]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[7]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[6]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[5]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[4]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[3]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[2]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[1]' from design 'norm_stage_DW_lzd_1'
+Removing port 'dec[0]' from design 'norm_stage_DW_lzd_1'
+Removing port 'sc' from design 'spec_handler'
+1
+###############################
+change_names -hierarchy -rules TAN_RULE
+Warning: The specified replacement character (_) is conflicting with the specified allowed or restricted character.   (UCN-4)
+1
+report_timing -delay max -max_paths 20 > $timing_report
+report_timing -delay max -path end -max_path 10 > $timing_max20_report
+report_area > $area_report
+report_reference > $references_report
+report_cell > $cell_report
+report_constraint -all_violators -verbose > $constraint_report
+report_power -analysis_effort high -verbose > $power_report
+check_design > $check_syntax_report
+#-----------------------------------------------------
+# Step 8 :
+# Write Files (netlist out)
+#-----------------------------------------------------
+change_names -rule verilog -hier
+1
+write -format verilog -hierarchy -output $out_netlist
+Writing verilog file '/root/clp_root/current_tasks/2015_secondhalf/vfpu_v2/dc/synthesis_netlist/maf_netlist.v'.
+Warning: Verilog writer has added 6 nets to module mul_24x24 using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+Warning: Verilog writer has added 11 nets to module exp_handler using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+Warning: Verilog writer has added 1 nets to module round_stage using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+1
+#write -format db -hierarchy -output $out_db
+write_sdf  $out_sdf
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/root/clp_root/current_tasks/2015_secondhalf/vfpu_v2/dc/synthesis_netlist/maf.sdf'. (WT-3)
+1
+write_sdc  $out_sdc
+1
+write_parasitics -output ./$active_design.spf
+Information: Writing parasitics to file '/root/clp_root/current_tasks/2015_secondhalf/vfpu_v2/dc/maf.spf'. (WP-3)
+1
+#sh vcd2saif -input ./$active_design.dump -output ./rtlvcd.saif
+#saif_map -create_map -source_instance l-r_t/lr1 -input ./rtlvcd.saif 
+#saif_map -write_map ./$active_design\_ptpxmap.tcl -type ptpx
+#============================ End ============================
+dc_shell> exit[K[K[K[Kexit
+
+Memory usage for this session 131 Mbytes.
+CPU usage for this session 303 seconds.
+
+Thank you...

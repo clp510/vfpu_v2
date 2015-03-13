@@ -17,3 +17,6 @@ see the directory "./test_svdpi"
 2015.01.25
 how to execute shell command in tcl script?
 solution: exec
+
+2014.03.13
+adding VCS support

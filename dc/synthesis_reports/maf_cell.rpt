@@ -1,0 +1,545 @@
+ 
+****************************************
+Report : cell
+Design : maf
+Version: B-2008.09
+Date   : Fri Mar 13 11:16:07 2015
+****************************************
+
+Attributes:
+    b - black box (unknown)
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    u - contains unmapped logic
+
+Cell                      Reference       Library             Area  Attributes
+--------------------------------------------------------------------------------
+U3                        BUFX8           typical_1v2c25  13.579200 
+U4                        CLKBUFX2        typical_1v2c25  6.789600  
+U5                        BUFX6           typical_1v2c25  11.881800 
+U6                        BUFX3           typical_1v2c25  8.487000  
+U7                        BUFX6           typical_1v2c25  11.881800 
+U8                        BUFX6           typical_1v2c25  11.881800 
+U9                        BUFX6           typical_1v2c25  11.881800 
+U10                       BUFX6           typical_1v2c25  11.881800 
+U11                       BUFX3           typical_1v2c25  8.487000  
+U12                       BUFX16          typical_1v2c25  23.763599 
+U13                       CLKBUFX2        typical_1v2c25  6.789600  
+U14                       BUFX4           typical_1v2c25  8.487000  
+U15                       BUFX3           typical_1v2c25  8.487000  
+U16                       BUFX3           typical_1v2c25  8.487000  
+U17                       BUFX3           typical_1v2c25  8.487000  
+U18                       BUFX4           typical_1v2c25  8.487000  
+U19                       BUFX3           typical_1v2c25  8.487000  
+U20                       CLKBUFX3        typical_1v2c25  6.789600  
+U21                       CLKBUFX3        typical_1v2c25  6.789600  
+add_stage_inst            add_stage                       16549.649948
+                                                                    h
+c_frac_align_h_r0_reg_0_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_1_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_2_  DFFTRX2         typical_1v2c25  30.553200 n
+c_frac_align_h_r0_reg_3_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_4_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_5_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_6_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_7_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_8_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_9_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_10_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_11_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_12_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_13_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_14_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_15_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_16_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_17_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_18_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_19_ DFFTRX2         typical_1v2c25  30.553200 n
+c_frac_align_h_r0_reg_20_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_21_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_22_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_h_r0_reg_23_ DFFTRX2         typical_1v2c25  30.553200 n
+c_frac_align_h_r0_reg_24_ DFFTRX1         typical_1v2c25  28.855801 n
+c_frac_align_h_r0_reg_25_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_0_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_1_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_2_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_3_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_4_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_5_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_6_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_7_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_8_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_9_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_10_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_11_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_12_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_13_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_14_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_15_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_16_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_17_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_18_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_19_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_20_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_21_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_22_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_l_r0_reg_23_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_0_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_1_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_2_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_3_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_4_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_5_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_6_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_7_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_8_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_9_  DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_10_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_11_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_12_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_13_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_14_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_15_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_16_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_17_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_18_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_19_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_20_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_21_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_22_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_23_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_24_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_25_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_26_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_27_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_28_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_29_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_30_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_31_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_32_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_33_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_34_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_35_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_36_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_37_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_38_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_39_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_40_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_41_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_42_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_43_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_44_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_45_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_46_ DFFTRX4         typical_1v2c25  40.737598 n
+c_frac_align_m_r0_reg_47_ DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_0_           DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_1_           DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_2_           DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_3_           DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_4_           DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_5_           DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_6_           DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_7_           DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_8_           DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_9_           DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_10_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_11_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_12_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_13_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_14_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_15_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_16_          DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_17_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_18_          DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_19_          DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_20_          DFFTRX2         typical_1v2c25  30.553200 n
+carry_r0_reg_21_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_22_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_23_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_24_          DFFTRX2         typical_1v2c25  30.553200 n
+carry_r0_reg_25_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_26_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_27_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_28_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_29_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_30_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_31_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_32_          DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_33_          DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_34_          DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_35_          DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_36_          DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_37_          DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_38_          DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_39_          DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_40_          DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_41_          DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_42_          DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_43_          DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_44_          DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_45_          DFFTRX4         typical_1v2c25  40.737598 n
+carry_r0_reg_46_          DFFTRX1         typical_1v2c25  28.855801 n
+carry_r0_reg_47_          DFFTRX1         typical_1v2c25  28.855801 n
+denorm_m_r2_reg           DFFHQX8         typical_1v2c25  49.224602 n
+exp_norm_r2_reg_0_        DFFQX1          typical_1v2c25  25.461000 n
+exp_norm_r2_reg_1_        DFFQX1          typical_1v2c25  25.461000 n
+exp_norm_r2_reg_2_        DFFQX1          typical_1v2c25  25.461000 n
+exp_norm_r2_reg_3_        DFFQX1          typical_1v2c25  25.461000 n
+exp_norm_r2_reg_4_        DFFQX1          typical_1v2c25  25.461000 n
+exp_norm_r2_reg_5_        DFFQX1          typical_1v2c25  25.461000 n
+exp_norm_r2_reg_6_        DFFQX1          typical_1v2c25  25.461000 n
+exp_norm_r2_reg_7_        DFFQX1          typical_1v2c25  25.461000 n
+exp_norm_r2_reg_8_        DFFQX1          typical_1v2c25  25.461000 n
+exp_norm_r2_reg_9_        DFFQX1          typical_1v2c25  25.461000 n
+exp_tmp_r0_reg_0_         DFFTRX2         typical_1v2c25  30.553200 n
+exp_tmp_r0_reg_1_         DFFTRX1         typical_1v2c25  28.855801 n
+exp_tmp_r0_reg_2_         DFFTRX1         typical_1v2c25  28.855801 n
+exp_tmp_r0_reg_3_         DFFTRX2         typical_1v2c25  30.553200 n
+exp_tmp_r0_reg_4_         DFFTRX1         typical_1v2c25  28.855801 n
+exp_tmp_r0_reg_5_         DFFTRX2         typical_1v2c25  30.553200 n
+exp_tmp_r0_reg_6_         DFFTRX2         typical_1v2c25  30.553200 n
+exp_tmp_r0_reg_7_         DFFTRX4         typical_1v2c25  40.737598 n
+exp_tmp_r0_reg_8_         DFFTRX1         typical_1v2c25  28.855801 n
+exp_tmp_r0_reg_9_         DFFTRX1         typical_1v2c25  28.855801 n
+exp_tmp_r1_reg_0_         DFFHQX4         typical_1v2c25  45.829800 n
+exp_tmp_r1_reg_1_         DFFHQX4         typical_1v2c25  45.829800 n
+exp_tmp_r1_reg_2_         DFFHQX8         typical_1v2c25  49.224602 n
+exp_tmp_r1_reg_3_         DFFHQX4         typical_1v2c25  45.829800 n
+exp_tmp_r1_reg_4_         DFFHQX8         typical_1v2c25  49.224602 n
+exp_tmp_r1_reg_5_         DFFQX2          typical_1v2c25  27.158400 n
+exp_tmp_r1_reg_6_         DFFQX4          typical_1v2c25  33.948002 n
+exp_tmp_r1_reg_7_         DFFQXL          typical_1v2c25  25.461000 n
+exp_tmp_r1_reg_8_         DFFQX1          typical_1v2c25  25.461000 n
+exp_tmp_r1_reg_9_         DFFQX1          typical_1v2c25  25.461000 n
+final_m_r0_reg            DFFTRX1         typical_1v2c25  28.855801 n
+final_m_r1_reg            DFFQX1          typical_1v2c25  25.461000 n
+frac_inter_h_s_r1_reg     DFFQXL          typical_1v2c25  25.461000 n
+frac_inter_norm_r2_reg_0_ DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_norm_r2_reg_1_ DFFHQX2         typical_1v2c25  35.645401 n
+frac_inter_norm_r2_reg_2_ DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_norm_r2_reg_3_ DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_norm_r2_reg_4_ DFFQX1          typical_1v2c25  25.461000 n
+frac_inter_norm_r2_reg_5_ DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_norm_r2_reg_6_ DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_norm_r2_reg_7_ DFFHQX4         typical_1v2c25  45.829800 n
+frac_inter_norm_r2_reg_8_ DFFHQX2         typical_1v2c25  35.645401 n
+frac_inter_norm_r2_reg_9_ DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_norm_r2_reg_10_
+                          DFFHQX4         typical_1v2c25  45.829800 n
+frac_inter_norm_r2_reg_11_
+                          DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_norm_r2_reg_12_
+                          DFFHQX4         typical_1v2c25  45.829800 n
+frac_inter_norm_r2_reg_13_
+                          DFFHQX4         typical_1v2c25  45.829800 n
+frac_inter_norm_r2_reg_14_
+                          DFFHQX2         typical_1v2c25  35.645401 n
+frac_inter_norm_r2_reg_15_
+                          DFFHQX4         typical_1v2c25  45.829800 n
+frac_inter_norm_r2_reg_16_
+                          DFFHQX2         typical_1v2c25  35.645401 n
+frac_inter_norm_r2_reg_17_
+                          DFFHQX4         typical_1v2c25  45.829800 n
+frac_inter_norm_r2_reg_18_
+                          DFFHQX4         typical_1v2c25  45.829800 n
+frac_inter_norm_r2_reg_19_
+                          DFFQX1          typical_1v2c25  25.461000 n
+frac_inter_norm_r2_reg_20_
+                          DFFQX1          typical_1v2c25  25.461000 n
+frac_inter_norm_r2_reg_21_
+                          DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_norm_r2_reg_22_
+                          DFFQX1          typical_1v2c25  25.461000 n
+frac_inter_norm_r2_reg_23_
+                          DFFQX1          typical_1v2c25  25.461000 n
+frac_inter_norm_r2_reg_24_
+                          DFFQX1          typical_1v2c25  25.461000 n
+frac_inter_norm_r2_reg_25_
+                          DFFQX1          typical_1v2c25  25.461000 n
+frac_inter_norm_r2_reg_26_
+                          DFFQX1          typical_1v2c25  25.461000 n
+frac_inter_r1_reg_0_      DFFHQX4         typical_1v2c25  45.829800 n
+frac_inter_r1_reg_1_      DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_2_      DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_3_      DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_4_      DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_5_      DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_6_      DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_7_      DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_8_      DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_9_      DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_10_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_11_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_12_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_13_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_14_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_15_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_16_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_17_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_18_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_19_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_20_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_21_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_22_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_23_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_24_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_25_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_26_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_27_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_28_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_29_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_30_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_31_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_32_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_33_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_34_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_35_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_36_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_37_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_38_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_39_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_40_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_41_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_42_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_43_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_44_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_45_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_46_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_47_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_48_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_49_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_50_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_51_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_52_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_53_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_54_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_55_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_56_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_57_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_58_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_59_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_60_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_61_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_62_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_63_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_64_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_65_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_66_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_67_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_68_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_69_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_70_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_71_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_72_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_73_     DFFHQX8         typical_1v2c25  49.224602 n
+frac_inter_r1_reg_74_     DFFHQX8         typical_1v2c25  49.224602 n
+inv_mask_r0_reg           DFFTRX4         typical_1v2c25  40.737598 n
+mul_stage_inst            mul_stage                       59149.298119
+                                                                    h
+nj_mode_r0_reg            DFFTRX1         typical_1v2c25  28.855801 n
+nj_mode_r1_reg            DFFQX1          typical_1v2c25  25.461000 n
+nj_mode_r2_reg            DFFQX1          typical_1v2c25  25.461000 n
+norm_stage_inst           norm_stage                      33530.439852
+                                                                    h
+op_vld_r0_reg             DFFQX1          typical_1v2c25  25.461000 n
+op_vld_r1_reg             DFFQX1          typical_1v2c25  25.461000 n
+op_vld_r2_reg             DFFQX1          typical_1v2c25  25.461000 n
+res_rdy_reg               DFFQX2          typical_1v2c25  27.158400 n
+res_reg_0_                MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_1_                MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_2_                MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_3_                MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_4_                MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_5_                MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_6_                MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_7_                MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_8_                MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_9_                MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_10_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_11_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_12_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_13_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_14_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_15_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_16_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_17_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_18_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_19_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_20_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_21_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_22_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_23_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_24_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_25_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_26_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_27_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_28_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_29_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_30_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_reg_31_               MDFFHQX2        typical_1v2c25  40.737598 n
+res_spec_r0_reg_0_        DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_1_        DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_2_        DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_3_        DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_4_        DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_5_        DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_6_        DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_7_        DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_8_        DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_9_        DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_10_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_11_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_12_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_13_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_14_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_15_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_16_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_17_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_18_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_19_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_20_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_21_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_22_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_23_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_24_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_25_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_26_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_27_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_28_       DFFTRX2         typical_1v2c25  30.553200 n
+res_spec_r0_reg_29_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_30_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r0_reg_31_       DFFTRX1         typical_1v2c25  28.855801 n
+res_spec_r1_reg_0_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_1_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_2_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_3_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_4_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_5_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_6_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_7_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_8_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_9_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_10_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_11_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_12_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_13_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_14_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_15_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_16_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_17_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_18_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_19_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_20_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_21_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_22_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_23_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_24_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_25_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_26_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_27_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_28_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_29_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_30_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r1_reg_31_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_0_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_1_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_2_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_3_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_4_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_5_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_6_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_7_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_8_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_9_        DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_10_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_11_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_12_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_13_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_14_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_15_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_16_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_17_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_18_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_19_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_20_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_21_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_22_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_23_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_24_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_25_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_26_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_27_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_28_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_29_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_30_       DFFQX1          typical_1v2c25  25.461000 n
+res_spec_r2_reg_31_       DFFQX1          typical_1v2c25  25.461000 n
+round_stage_inst          round_stage                     1531.054776
+                                                                    h
+s_final_r2_reg            DFFQX1          typical_1v2c25  25.461000 n
+s_tmp_r0_reg              DFFTRX1         typical_1v2c25  28.855801 n
+s_tmp_r1_reg              DFFQX1          typical_1v2c25  25.461000 n
+spec_handler_inst         spec_handler                    1933.338612
+                                                                    h
+spec_mask_r0_reg          DFFTRX1         typical_1v2c25  28.855801 n
+spec_mask_r1_reg          DFFQX1          typical_1v2c25  25.461000 n
+spec_mask_r2_reg          DFFQX1          typical_1v2c25  25.461000 n
+sum_r0_reg_0_             DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_1_             DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_2_             DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_3_             DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_4_             DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_5_             DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_6_             DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_7_             DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_8_             DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_9_             DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_10_            DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_11_            DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_12_            DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_13_            DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_14_            DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_15_            DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_16_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_17_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_18_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_19_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_20_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_21_            DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_22_            DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_23_            DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_24_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_25_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_26_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_27_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_28_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_29_            DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_30_            DFFTRX4         typical_1v2c25  40.737598 n
+sum_r0_reg_31_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_32_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_33_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_34_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_35_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_36_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_37_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_38_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_39_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_40_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_41_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_42_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_43_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_44_            DFFTRX2         typical_1v2c25  30.553200 n
+sum_r0_reg_45_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_46_            DFFTRX1         typical_1v2c25  28.855801 n
+sum_r0_reg_47_            DFFTRX1         typical_1v2c25  28.855801 n
+unpackage_a               unpackage_2                     1308.695404
+                                                                    h
+unpackage_b               unpackage_1                     1376.591392
+                                                                    h
+unpackage_c               unpackage_0                     882.648000
+                                                                    h
+zero_m_r2_reg             DFFX4           typical_1v2c25  42.435001 n
+--------------------------------------------------------------------------------
+Total 500 cells                                           133823.016474
+1

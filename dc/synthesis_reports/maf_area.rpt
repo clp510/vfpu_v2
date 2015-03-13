@@ -1,0 +1,24 @@
+ 
+****************************************
+Report : area
+Design : maf
+Version: B-2008.09
+Date   : Fri Mar 13 11:16:07 2015
+****************************************
+
+Library(s) Used:
+
+    typical_1v2c25 (File: /usr/eda/synopsys/lib/smic13_lib/typical_1v2c25.db)
+
+Number of ports:              132
+Number of nets:              1111
+Number of cells:              500
+Number of references:          27
+
+Combinational area:       116453.522303
+Noncombinational area:    17369.494171
+Net Interconnect area:    738503.751862
+
+Total cell area:          133823.016474
+Total area:               872326.768336
+1

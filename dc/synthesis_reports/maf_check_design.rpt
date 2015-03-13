@@ -1,0 +1,357 @@
+Warning: In design 'add_stage', a pin on submodule 'add_64' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'A[48]' is connected to logic 0. 
+   Pin 'B[48]' is connected to logic 0. 
+Warning: In design 'add_stage', the same net is connected to more than one pin on submodule 'add_64'. (LINT-33)
+   Net 'n175' is connected to pins 'A[48]', 'B[48]'. 
+Warning: In design 'maf', net 'add_stage_inst/n174' driven by pin 'add_stage_inst/U272/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'maf', net 'add_stage_inst/n173' driven by pin 'add_stage_inst/U273/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'round_stage', a pin on submodule 'add_47' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'A[24]' is connected to logic 0. 
+Warning: In design 'exp_handler', a pin on submodule 'add_42' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'A[0]' is connected to logic 1. 
+   Pin 'B[0]' is connected to logic 1. 
+Warning: In design 'exp_handler', the same net is connected to more than one pin on submodule 'add_42'. (LINT-33)
+   Net 'n32' is connected to pins 'A[10]', 'A[9]', 'A[8]'. 
+   Net 'n86' is connected to pins 'A[0]', 'B[0]'. 
+Warning: In design 'exp_handler', the same net is connected to more than one pin on submodule 'add_35'. (LINT-33)
+   Net 'exp_a[7]' is connected to pins 'A[8]', 'A[7]'. 
+   Net 'exp_b[7]' is connected to pins 'B[8]', 'B[7]'. 
+Warning: In design 'exp_handler', a pin on submodule 'add_49' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'A[0]' is connected to logic 1. 
+   Pin 'B[0]' is connected to logic 1. 
+Warning: In design 'exp_handler', the same net is connected to more than one pin on submodule 'add_49'. (LINT-33)
+   Net 'n31' is connected to pins 'A[9]', 'A[8]'. 
+   Net 'n86' is connected to pins 'A[0]', 'B[0]'. 
+   Net 'n82' is connected to pins 'B[10]', 'B[9]'. 
+Warning: In design 'maf', net 'mul_stage_inst/exp_handler_inst/n87' driven by pin 'mul_stage_inst/exp_handler_inst/U128/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'maf', net 'mul_stage_inst/exp_handler_inst/n85' driven by pin 'mul_stage_inst/exp_handler_inst/U130/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'maf', net 'mul_stage_inst/exp_handler_inst/n84' driven by pin 'mul_stage_inst/exp_handler_inst/U131/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst00' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[26]' is connected to logic 0. 
+   Pin 'a[25]' is connected to logic 0. 
+   Pin 'a[24]' is connected to logic 0. 
+   Pin 'b[26]' is connected to logic 0. 
+   Pin 'b[25]' is connected to logic 0. 
+   Pin 'b[0]' is connected to logic 0. 
+   Pin 'c[26]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst00'. (LINT-33)
+   Net 'n_Logic0_' is connected to pins 'ci', 'a[26]', 'a[25]', 'a[24]', 'b[26]', 'b[25]', 'b[0]', 'c[26]', 'c[1]', 'c[0]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst01' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[26]' is connected to logic 0. 
+   Pin 'a[25]' is connected to logic 0. 
+   Pin 'a[24]' is connected to logic 0. 
+   Pin 'b[26]' is connected to logic 0. 
+   Pin 'b[25]' is connected to logic 0. 
+   Pin 'b[0]' is connected to logic 0. 
+   Pin 'c[26]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst01'. (LINT-33)
+   Net 'n_Logic0_' is connected to pins 'ci', 'a[26]', 'a[25]', 'a[24]', 'b[26]', 'b[25]', 'b[0]', 'c[26]', 'c[1]', 'c[0]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst02' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[26]' is connected to logic 0. 
+   Pin 'a[25]' is connected to logic 0. 
+   Pin 'a[24]' is connected to logic 0. 
+   Pin 'b[26]' is connected to logic 0. 
+   Pin 'b[25]' is connected to logic 0. 
+   Pin 'b[0]' is connected to logic 0. 
+   Pin 'c[26]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst02'. (LINT-33)
+   Net 'n_Logic0_' is connected to pins 'ci', 'a[26]', 'a[25]', 'a[24]', 'b[26]', 'b[25]', 'b[0]', 'c[26]', 'c[1]', 'c[0]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst03' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[26]' is connected to logic 0. 
+   Pin 'a[25]' is connected to logic 0. 
+   Pin 'a[24]' is connected to logic 0. 
+   Pin 'b[26]' is connected to logic 0. 
+   Pin 'b[25]' is connected to logic 0. 
+   Pin 'b[0]' is connected to logic 0. 
+   Pin 'c[26]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst03'. (LINT-33)
+   Net 'n_Logic0_' is connected to pins 'ci', 'a[26]', 'a[25]', 'a[24]', 'b[26]', 'b[25]', 'b[0]', 'c[26]', 'c[1]', 'c[0]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst04' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[26]' is connected to logic 0. 
+   Pin 'a[25]' is connected to logic 0. 
+   Pin 'a[24]' is connected to logic 0. 
+   Pin 'b[26]' is connected to logic 0. 
+   Pin 'b[25]' is connected to logic 0. 
+   Pin 'b[0]' is connected to logic 0. 
+   Pin 'c[26]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst04'. (LINT-33)
+   Net 'n_Logic0_' is connected to pins 'ci', 'a[26]', 'a[25]', 'a[24]', 'b[26]', 'b[25]', 'b[0]', 'c[26]', 'c[1]', 'c[0]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst05' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[26]' is connected to logic 0. 
+   Pin 'a[25]' is connected to logic 0. 
+   Pin 'a[24]' is connected to logic 0. 
+   Pin 'b[26]' is connected to logic 0. 
+   Pin 'b[25]' is connected to logic 0. 
+   Pin 'b[0]' is connected to logic 0. 
+   Pin 'c[26]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst05'. (LINT-33)
+   Net 'n_Logic0_' is connected to pins 'ci', 'a[26]', 'a[25]', 'a[24]', 'b[26]', 'b[25]', 'b[0]', 'c[26]', 'c[1]', 'c[0]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst10' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[31]' is connected to logic 0. 
+   Pin 'a[30]' is connected to logic 0. 
+   Pin 'a[29]' is connected to logic 0. 
+   Pin 'a[28]' is connected to logic 0. 
+   Pin 'b[31]' is connected to logic 0. 
+   Pin 'b[30]' is connected to logic 0. 
+   Pin 'b[29]' is connected to logic 0. 
+   Pin 'b[28]' is connected to logic 0. 
+   Pin 'c[3]' is connected to logic 0. 
+   Pin 'c[2]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[3]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst10'. (LINT-33)
+   Net 'n_Logic0_' is connected to pins 'ci', 'a[31]', 'a[30]', 'a[29]', 'a[28]', 'b[31]', 'b[30]', 'b[29]', 'b[28]', 'c[3]', 'c[2]', 'c[1]', 'c[0]', 'd[3]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst11' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[31]' is connected to logic 0. 
+   Pin 'a[30]' is connected to logic 0. 
+   Pin 'a[29]' is connected to logic 0. 
+   Pin 'a[28]' is connected to logic 0. 
+   Pin 'b[31]' is connected to logic 0. 
+   Pin 'b[30]' is connected to logic 0. 
+   Pin 'b[29]' is connected to logic 0. 
+   Pin 'b[28]' is connected to logic 0. 
+   Pin 'c[3]' is connected to logic 0. 
+   Pin 'c[2]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[3]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst11'. (LINT-33)
+   Net 'n_Logic0_' is connected to pins 'ci', 'a[31]', 'a[30]', 'a[29]', 'a[28]', 'b[31]', 'b[30]', 'b[29]', 'b[28]', 'c[3]', 'c[2]', 'c[1]', 'c[0]', 'd[3]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst12' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[31]' is connected to logic 0. 
+   Pin 'a[30]' is connected to logic 0. 
+   Pin 'a[29]' is connected to logic 0. 
+   Pin 'a[28]' is connected to logic 0. 
+   Pin 'b[31]' is connected to logic 0. 
+   Pin 'b[30]' is connected to logic 0. 
+   Pin 'b[29]' is connected to logic 0. 
+   Pin 'b[28]' is connected to logic 0. 
+   Pin 'c[3]' is connected to logic 0. 
+   Pin 'c[2]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[3]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst12'. (LINT-33)
+   Net 'n_Logic0_' is connected to pins 'ci', 'a[31]', 'a[30]', 'a[29]', 'a[28]', 'b[31]', 'b[30]', 'b[29]', 'b[28]', 'c[3]', 'c[2]', 'c[1]', 'c[0]', 'd[3]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'csa4_2_inst40' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+   Pin 'a[49]' is connected to logic 0. 
+   Pin 'a[48]' is connected to logic 0. 
+   Pin 'a[47]' is connected to logic 0. 
+   Pin 'a[46]' is connected to logic 0. 
+   Pin 'a[45]' is connected to logic 0. 
+   Pin 'a[44]' is connected to logic 0. 
+   Pin 'a[43]' is connected to logic 0. 
+   Pin 'a[42]' is connected to logic 0. 
+   Pin 'a[41]' is connected to logic 0. 
+   Pin 'b[49]' is connected to logic 0. 
+   Pin 'b[48]' is connected to logic 0. 
+   Pin 'b[47]' is connected to logic 0. 
+   Pin 'b[46]' is connected to logic 0. 
+   Pin 'b[45]' is connected to logic 0. 
+   Pin 'b[44]' is connected to logic 0. 
+   Pin 'b[43]' is connected to logic 0. 
+   Pin 'b[42]' is connected to logic 0. 
+   Pin 'c[49]' is connected to logic 0. 
+   Pin 'c[7]' is connected to logic 0. 
+   Pin 'c[6]' is connected to logic 0. 
+   Pin 'c[5]' is connected to logic 0. 
+   Pin 'c[4]' is connected to logic 0. 
+   Pin 'c[3]' is connected to logic 0. 
+   Pin 'c[2]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'd[7]' is connected to logic 0. 
+   Pin 'd[6]' is connected to logic 0. 
+   Pin 'd[5]' is connected to logic 0. 
+   Pin 'd[4]' is connected to logic 0. 
+   Pin 'd[3]' is connected to logic 0. 
+   Pin 'd[2]' is connected to logic 0. 
+   Pin 'd[1]' is connected to logic 0. 
+   Pin 'd[0]' is connected to logic 0. 
+Warning: In design 'maf', net 'mul_stage_inst/mul_24x24_inst/csa4_2_inst40/csa_inst0/co' has no drivers.  Logic 0 assumed. (LINT-3)
+Warning: In design 'maf', net 'mul_stage_inst/mul_24x24_inst/csa4_2_inst40/csa_inst1/sum[49]' has no drivers.  Logic 0 assumed. (LINT-3)
+Warning: In design 'maf', net 'mul_stage_inst/mul_24x24_inst/csa4_2_inst40/csa_inst1/sum[48]' has no drivers.  Logic 0 assumed. (LINT-3)
+Warning: In design 'maf', net 'mul_stage_inst/mul_24x24_inst/csa4_2_inst40/csa_inst1/co' has no drivers.  Logic 0 assumed. (LINT-3)
+Warning: In design 'maf', net 'mul_stage_inst/mul_24x24_inst/csa4_2_inst40/csa_inst1/carry[49]' has no drivers.  Logic 0 assumed. (LINT-3)
+Warning: In design 'maf', net 'mul_stage_inst/mul_24x24_inst/csa4_2_inst40/csa_inst1/carry[48]' has no drivers.  Logic 0 assumed. (LINT-3)
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'csa4_2_inst40'. (LINT-33)
+   Net 'n_Logic0_' is connected to pins 'ci', 'a[49]', 'a[48]', 'a[47]', 'a[46]', 'a[45]', 'a[44]', 'a[43]', 'a[42]', 'a[41]', 'b[49]', 'b[48]', 'b[47]', 'b[46]', 'b[45]', 'b[44]', 'b[43]', 'b[42]', 'c[49]', 'c[7]', 'c[6]', 'c[5]', 'c[4]', 'c[3]', 'c[2]', 'c[1]', 'c[0]', 'd[7]', 'd[6]', 'd[5]', 'd[4]', 'd[3]', 'd[2]', 'd[1]', 'd[0]'. 
+Warning: In design 'mul_24x24', a pin on submodule 'DW01_csa_inst21' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'a[40]' is connected to logic 0. 
+   Pin 'a[39]' is connected to logic 0. 
+   Pin 'a[38]' is connected to logic 0. 
+   Pin 'a[37]' is connected to logic 0. 
+   Pin 'a[36]' is connected to logic 0. 
+   Pin 'a[35]' is connected to logic 0. 
+   Pin 'a[34]' is connected to logic 0. 
+   Pin 'a[33]' is connected to logic 0. 
+   Pin 'b[7]' is connected to logic 0. 
+   Pin 'b[6]' is connected to logic 0. 
+   Pin 'b[5]' is connected to logic 0. 
+   Pin 'b[4]' is connected to logic 0. 
+   Pin 'b[3]' is connected to logic 0. 
+   Pin 'b[2]' is connected to logic 0. 
+   Pin 'b[1]' is connected to logic 0. 
+   Pin 'b[0]' is connected to logic 0. 
+   Pin 'c[7]' is connected to logic 0. 
+   Pin 'c[6]' is connected to logic 0. 
+   Pin 'c[5]' is connected to logic 0. 
+   Pin 'c[4]' is connected to logic 0. 
+   Pin 'c[3]' is connected to logic 0. 
+   Pin 'c[2]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'ci' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'DW01_csa_inst21'. (LINT-33)
+   Net 'n1' is connected to pins 'a[40]', 'a[39]', 'a[38]', 'a[37]', 'a[36]', 'a[35]', 'a[34]', 'a[33]', 'b[7]', 'b[6]', 'b[5]', 'b[4]', 'b[3]', 'b[2]', 'b[1]', 'b[0]', 'c[7]', 'c[6]', 'c[5]', 'c[4]', 'c[3]', 'c[2]', 'c[1]', 'c[0]', 'ci'. 
+Warning: In design 'mul_24x24', a pin on submodule 'DW01_csa_inst20' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'a[40]' is connected to logic 0. 
+   Pin 'a[39]' is connected to logic 0. 
+   Pin 'a[38]' is connected to logic 0. 
+   Pin 'a[37]' is connected to logic 0. 
+   Pin 'a[36]' is connected to logic 0. 
+   Pin 'a[35]' is connected to logic 0. 
+   Pin 'a[34]' is connected to logic 0. 
+   Pin 'a[33]' is connected to logic 0. 
+   Pin 'b[40]' is connected to logic 0. 
+   Pin 'b[39]' is connected to logic 0. 
+   Pin 'b[38]' is connected to logic 0. 
+   Pin 'b[37]' is connected to logic 0. 
+   Pin 'b[36]' is connected to logic 0. 
+   Pin 'b[35]' is connected to logic 0. 
+   Pin 'b[34]' is connected to logic 0. 
+   Pin 'b[33]' is connected to logic 0. 
+   Pin 'c[7]' is connected to logic 0. 
+   Pin 'c[6]' is connected to logic 0. 
+   Pin 'c[5]' is connected to logic 0. 
+   Pin 'c[4]' is connected to logic 0. 
+   Pin 'c[3]' is connected to logic 0. 
+   Pin 'c[2]' is connected to logic 0. 
+   Pin 'c[1]' is connected to logic 0. 
+   Pin 'c[0]' is connected to logic 0. 
+   Pin 'ci' is connected to logic 0. 
+Warning: In design 'mul_24x24', the same net is connected to more than one pin on submodule 'DW01_csa_inst20'. (LINT-33)
+   Net 'n1' is connected to pins 'a[40]', 'a[39]', 'a[38]', 'a[37]', 'a[36]', 'a[35]', 'a[34]', 'a[33]', 'b[40]', 'b[39]', 'b[38]', 'b[37]', 'b[36]', 'b[35]', 'b[34]', 'b[33]', 'c[7]', 'c[6]', 'c[5]', 'c[4]', 'c[3]', 'c[2]', 'c[1]', 'c[0]', 'ci'. 
+Warning: In design 'maf', net 'norm_stage_inst/denorm_handler_inst/n157' driven by pin 'norm_stage_inst/denorm_handler_inst/U307/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'csa4_2_WIDTH27_5', a pin on submodule 'csa_inst1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+Warning: In design 'csa4_2_WIDTH32_2', a pin on submodule 'csa_inst1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+Warning: In design 'csa4_2_WIDTH50', a pin on submodule 'csa_inst1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+Warning: In design 'maf', net 'mul_stage_inst/mul_24x24_inst/csa4_2_inst40/csa_inst0/carry[48]' has no drivers.  Logic 0 assumed. (LINT-3)
+Warning: In design 'maf', net 'mul_stage_inst/mul_24x24_inst/csa4_2_inst40/csa_inst0/carry[49]' has no drivers.  Logic 0 assumed. (LINT-3)
+Warning: In design 'maf', net 'mul_stage_inst/mul_24x24_inst/csa4_2_inst40/csa_inst0/sum[48]' has no drivers.  Logic 0 assumed. (LINT-3)
+Warning: In design 'maf', net 'mul_stage_inst/mul_24x24_inst/csa4_2_inst40/csa_inst0/sum[49]' has no drivers.  Logic 0 assumed. (LINT-3)
+Warning: In design 'csa4_2_WIDTH27_0', a pin on submodule 'csa_inst1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+Warning: In design 'csa4_2_WIDTH27_1', a pin on submodule 'csa_inst1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+Warning: In design 'csa4_2_WIDTH27_2', a pin on submodule 'csa_inst1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+Warning: In design 'csa4_2_WIDTH27_3', a pin on submodule 'csa_inst1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+Warning: In design 'csa4_2_WIDTH27_4', a pin on submodule 'csa_inst1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+Warning: In design 'csa4_2_WIDTH32_0', a pin on submodule 'csa_inst1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+Warning: In design 'csa4_2_WIDTH32_1', a pin on submodule 'csa_inst1' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'ci' is connected to logic 0. 
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_0', port 'a[49]' is not connected to any nets. (LINT-28)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_0', port 'a[48]' is not connected to any nets. (LINT-28)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_0', port 'b[49]' is not connected to any nets. (LINT-28)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_0', port 'b[48]' is not connected to any nets. (LINT-28)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_0', port 'c[49]' is not connected to any nets. (LINT-28)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_0', port 'c[48]' is not connected to any nets. (LINT-28)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_0', output port 'carry[49]' is not driven. (LINT-5)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_0', output port 'carry[48]' is not driven. (LINT-5)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_0', output port 'sum[49]' is not driven. (LINT-5)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_0', output port 'sum[48]' is not driven. (LINT-5)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_0', output port 'co' is not driven. (LINT-5)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_1', port 'a[49]' is not connected to any nets. (LINT-28)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_1', port 'a[48]' is not connected to any nets. (LINT-28)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_1', port 'b[49]' is not connected to any nets. (LINT-28)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_1', port 'b[48]' is not connected to any nets. (LINT-28)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_1', port 'c[49]' is not connected to any nets. (LINT-28)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_1', port 'c[48]' is not connected to any nets. (LINT-28)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_1', output port 'carry[49]' is not driven. (LINT-5)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_1', output port 'carry[48]' is not driven. (LINT-5)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_1', output port 'sum[49]' is not driven. (LINT-5)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_1', output port 'sum[48]' is not driven. (LINT-5)
+Warning: In design 'csa4_2_WIDTH50_DW01_csa_1', output port 'co' is not driven. (LINT-5)
+Warning: In design 'add_stage_DW01_add_2', port 'A[48]' is not connected to any nets. (LINT-28)
+Warning: In design 'add_stage_DW01_add_2', port 'B[48]' is not connected to any nets. (LINT-28)
+Warning: In design 'round_stage_DW01_inc_1', port 'A[24]' is not connected to any nets. (LINT-28)
+Warning: In design 'round_stage_DW01_inc_1', port 'SUM[23]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_10', port 'A[10]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_10', port 'A[9]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_10', port 'A[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_10', port 'B[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_10', port 'SUM[9]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_10', port 'SUM[8]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_10', port 'SUM[7]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_10', port 'SUM[6]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_10', port 'SUM[5]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_10', port 'SUM[4]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_10', port 'SUM[3]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_10', port 'SUM[2]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_10', port 'SUM[1]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_10', port 'SUM[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_13', port 'A[7]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_13', port 'B[7]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_14', port 'A[10]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_14', port 'A[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_14', port 'B[9]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_14', port 'B[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'exp_handler_DW01_add_14', port 'SUM[0]' is not connected to any nets. (LINT-28)
+1
