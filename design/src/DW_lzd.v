@@ -71,7 +71,7 @@ module DW_lzd (
   output [addr_width:0]   enc;
 
   // include modeling functions
-  `include "DW_lzd_function.inc"
+  `include "../../design/src/DW_lzd_function.inc"
     // synopsys translate_off
 
   //-------------------------------------------------------------------------
