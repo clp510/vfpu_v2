@@ -1,3 +1,0 @@
-import_DPI do_vec_vmaddfp test_p
-DirectC getCurSchedRegion 
-DirectC WmaskAndSet4 

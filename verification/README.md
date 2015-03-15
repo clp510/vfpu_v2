@@ -20,3 +20,6 @@ _dc     : data class ,a class that only contains data,no function or task.
     change directory into sim_vcs,type the following command in terminal:
         ./run.sh
     ps:donnot forget to load the license of sysnopsys eda tools before run the above command.
+
+//2015.03.15
+3. add windows simulation dir :sim_win

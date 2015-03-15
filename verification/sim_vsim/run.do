@@ -1,4 +1,4 @@
-exec gcc -c ref_top.c -o ref_top.o
+exec gcc -c ../ref_model/ref_top.c -o ref_top.o
 exec gcc -shared -o ref_top.so ref_top.o
 
 vlib work
