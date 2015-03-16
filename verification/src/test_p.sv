@@ -52,7 +52,6 @@ env_c_inst.driver_c_inst.run();//receive stimulus from stimu_gen_c_inst,and tran
 env_c_inst.monitor_c_inst.run();//monitor result data from dutw,and transmit to scoreboard transactor
 env_c_inst.scb_c_inst.run();//compare and print running info
 
-//env_c_inst.end_detect();//sim end detection
 join_any
 
 end

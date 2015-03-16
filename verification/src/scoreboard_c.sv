@@ -12,6 +12,7 @@
 //Copyright(c)by VLSI lab of Tianjin university
 //all rights reserved
 //==================================================================
+`include    "./define.v"
 
 import vfpu_dc_pkg::res_data_dc;
 import vfpu_dc_pkg::BIT;
@@ -33,6 +34,7 @@ extern  function new (
                     );
 
 extern  task    run ();
+extern  task    end_detect();
 
 endclass : scoreboard_c
 
@@ -90,7 +92,7 @@ begin
 //        $display("=======================testcase %d pass==================",counter);
     end
     else//mismatch
-    begin
+        begin
         $display( 
 "-------------testcase %d mismatch------------------\n\
                 a = 0x%h,\n\
@@ -98,13 +100,23 @@ begin
                 c = 0x%h,\n\
  software result  = 0x%h,\n\
  hardware result  = 0x%h",counter,res_data_dc_hw.operand_a_rx,res_data_dc_hw.operand_b_rx,res_data_dc_hw.operand_c_rx,res_sw,res_data_dc_hw.res);
-    end
-end
+        end
+
+//detect end
+end_detect();
+
+end//end if
 end//end while
 
 endtask : run
 
 
+task    scoreboard_c::end_detect  ();
+
+if( counter >= `MAX_NUM )
+    $stop;
+
+endtask : end_detect    
 
 
 

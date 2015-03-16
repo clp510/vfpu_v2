@@ -12,7 +12,6 @@
 //all rights reserved
 //==================================================================
 
-`define MAX_NUM 1000
 
 import  vfpu_dc_pkg::stimu_data_c ;
 import  vfpu_dc_pkg::res_data_dc;
@@ -23,7 +22,6 @@ import  vfpu_dc_pkg::BIT;
 `include    "../src/monitor_c.sv"
 `include    "../src/driver_c.sv"
 //`include    "./src/vfpu_if.sv"
-
 
 class   env_c;
 
@@ -44,7 +42,7 @@ extern  function    new ( virtual test_dutw_if.TST  test_if_inst);
 extern  function    void build();
 
 //run task
-extern  task    end_detect();
+//extern  task    end_detect();
 
 endclass : env_c
 
@@ -85,12 +83,6 @@ endfunction : build
 
 //-------------------------------------------------------------
 
-task    env_c::end_detect  ();
-
-if( scb_c_inst.counter >= 100000 )
-    $stop;
-
-endtask : end_detect    
 
 
 

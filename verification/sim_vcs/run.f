@@ -1,4 +1,4 @@
-../../design/src/define.v
+./define.v
 ../../design/src/add_stage.v
 ../../design/src/align_shf_74.v
 ../../design/src/csa4_2.v
